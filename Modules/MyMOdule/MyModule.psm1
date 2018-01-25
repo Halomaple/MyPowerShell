@@ -414,12 +414,7 @@ function Start-TeleoptiInfratestConfig {
 
 function Start-TeleoptiFixMyConfigFlow {
     Write-Host "Starting Teleopti FixMyConfigFlow..."
-    $file = Get-Content "$TeleoptiDebug\FixMyConfigFlow.bat" -Raw
-
-    $file = $file.replace("DemoSales", "Demo")
-    $file | Out-File -Encoding "ASCII" -FilePath "$TeleoptiDebug\FixMyConfigFlowDemo.bat"
-    & "$TeleoptiDebug\FixMyConfigFlowDemo.bat"
-    rm "$TeleoptiDebug\FixMyConfigFlowDemo.bat"
+    & "$TeleoptiDebug\FixMyConfigFlow.bat"
 }
 
 function Start-TeleoptiFatClient {
