@@ -70,6 +70,7 @@ function Start-Up{
     Projects:
         fat - 'Run Teleopti Fat Client'
         kfat - 'Kill Teleopti Fat Client'
+        clean - 'Clean IIS and kill Teleopti Fat Client'
 
     Websites:
         kanban - 'Kanban Board'
@@ -157,6 +158,12 @@ function Start-ClearIISExpressCache {
     Write-Host "Clearing IISExpress Cache..."
     rm ~/Documents/IISExpress/* -r
     Write-Host "IISExpress Cache Cleaned!"
+}
+
+function Start-Clean () {
+    Start-KillIISExpress
+    Start-KillTeleoptiFatClient
+    Start-ClearIISExpressCache
 }
 
 function Start-HG {

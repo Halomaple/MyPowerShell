@@ -37,6 +37,8 @@ New-Alias -name desktop -value  Start-TeleoptiEnableDesktopAccessOnly -descripti
 New-Alias -name fat -value Start-TeleoptiFatClient -description "Run Teleopti Fat Client" -option ReadOnly
 New-Alias -name kfat -value Start-KillTeleoptiFatClient -description "Kill Teleopti Fat Client" -option ReadOnly
 
+New-Alias -name clean -value Start-Clean -description "Clean IIS and kill Teleopti Fat Client" -option ReadOnly
+
 New-Alias -name kanban -value New-Kanban -description "Kanban Board" -option ReadOnly
 New-Alias -name build -value New-BuildServer -description "Teleopti Build Server" -option ReadOnly
 New-Alias -name styleguide -value New-StyleGuide -description "StyleGuide" -option ReadOnly
