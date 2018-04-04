@@ -74,6 +74,7 @@ function Start-Up{
 
     Websites:
         kanban - 'Kanban Board'
+        id - 'Work item'
         build - 'Teleopti Build Server'
         styleguide - 'StyleGuide'
         intranet - 'Intranet'
@@ -456,6 +457,12 @@ function New-Kanban {
     $url1 = "https://teleopti.visualstudio.com/TeleoptiWFM/Code%20monkeys/_backlogs/board/Items"
     & $Chrome $url1
     Write-Host "Kanban opened in Chrome."
+}
+
+function New-WorkItem {
+    $url1 = "https://teleopti.visualstudio.com/TeleoptiWFM/_workitems/edit/$($args[0])"
+    & $Chrome $url1
+    Write-Host "Workd item opened in Chrome."
 }
 
 function New-BuildServer {
