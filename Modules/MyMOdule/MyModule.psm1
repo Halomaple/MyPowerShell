@@ -453,8 +453,7 @@ function New-OpenUrlInBrowser {
 }
 
 function New-Kanban {
-    Enable-TeleoptiVpn
-    $url1 = "http://rndkanban/board/#/team/6"
+    $url1 = "https://teleopti.visualstudio.com/TeleoptiWFM/Code%20monkeys/_backlogs/board/Items"
     & $Chrome $url1
     Write-Host "Kanban opened in Chrome."
 }
