@@ -34,12 +34,9 @@ function Start-Up{
         kis - 'Kill IIS Express'
         cis - 'Clear IIS Express Cache'
         sql - 'Luanch sql server management studio'
-        hgw - 'Launch TortoiseHg Workbench'
-        pst - 'Launch phpstorm'
 
     Folders:
         t - 'Teleopti Root'
-        util - 'Teleopti DevUtitlities'
         debug - 'Teleopti Debug'
         wfm - 'Teleopti WFM'
         styleh - 'StyleGuide Halomaple'
@@ -167,20 +164,12 @@ function Start-Clean () {
     Start-ClearIISExpressCache
 }
 
-function Start-HG {
-    Start-Process $HG
-}
-
 function Start-SSMS {
     Start-Process $SSMS
 }
 
 function Enter-Teleopti {
     Set-Location $Teleopti
-}
-
-function Enter-TeleoptiDevUtilities {
-    Set-Location $TeleoptiDevUtilities
 }
 
 function Enter-TeleoptiDebug {
