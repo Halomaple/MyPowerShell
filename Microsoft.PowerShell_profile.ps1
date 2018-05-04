@@ -13,7 +13,7 @@ New-Alias -name debug -value Enter-TeleoptiDebug -description "Teleopti Debug" -
 New-Alias -name wfm -value Enter-TeleoptiWFM -description "Teleopti WFM" -option ReadOnly
 New-Alias -name styleh -value Enter-StyleGuideHalomaple -description "StyleGuide-Halomaple" -option ReadOnly
 New-Alias -name stylet -value Enter-StyleGuideTeleopti -description "StyleGuide-Teleopti" -option ReadOnly
-New-Alias -name psfolder -value Enter-PowerShellFolder -description "My PowerShell Folder" -option ReadOnly
+New-Alias -name psf -value Enter-PowerShellFolder -description "My PowerShell Folder" -option ReadOnly
 
 New-Alias -name styleh-p -value Enter-StyleGuideHalomaplePath -description "Get StyleGuide-Halomaple Path" -option ReadOnly
 New-Alias -name stylet-p -value Enter-StyleGuideTeleoptiPath -description "Get StyleGuide-Teleopti Path" -option ReadOnly

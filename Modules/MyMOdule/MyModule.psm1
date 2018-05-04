@@ -41,7 +41,7 @@ function Start-Up{
         wfm - 'Teleopti WFM'
         styleh - 'StyleGuide Halomaple'
         stylet - 'StyleGuide Teleopti'
-        psfolder - 'My PowerShell Folder'
+        psf - 'My PowerShell Folder'
 
     Folders Paths:
         styleh-p - 'StyleGuide Halomaple Path'
