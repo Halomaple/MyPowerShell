@@ -76,8 +76,6 @@ function Start-Up{
         styleguide - 'StyleGuide'
         intranet - 'Intranet'
         rnd - 'IntranetRND'
-        slack - 'Slack'
-        mail - 'Mail'
         github - 'Github'
 
     Tools:
@@ -479,22 +477,10 @@ function New-IntranetRND {
     Write-Host "Intranet RND opened in Chrome."
 }
 
-function New-Mail {
-    $url = "http://webmail.teleopti.com/"
-    & $Chrome $url
-    Write-Host "Mail opened in Chrome."
-}
-
 function New-Github {
     $url = "https://github.com/"
     & $Chrome $url
     Write-Host "Github opened in Chrome."
-}
-
-function New-Slack {
-    $url = "https://teleopti.slack.com/messages/"
-    & $Chrome $url
-    Write-Host "Slack opened in Chrome."
 }
 
 function New-YoudaoDict {

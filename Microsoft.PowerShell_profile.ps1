@@ -44,8 +44,6 @@ New-Alias -name styleguide -value New-StyleGuide -description "StyleGuide" -opti
 New-Alias -name intranet -value New-Intranet -description "Intranet" -option ReadOnly
 New-Alias -name rnd -value New-IntranetRND -description "IntranetRND" -option ReadOnly
 
-New-Alias -name slack -value New-Slack -description "Slack" -option ReadOnly
-New-Alias -name mail -value New-Mail -description "Mail" -option ReadOnly
 New-Alias -name github -value New-Github -description "Github" -option ReadOnly
 
 New-Alias -name open -value New-OpenUrlInBrowser -description "Open url in browser" -option ReadOnly
