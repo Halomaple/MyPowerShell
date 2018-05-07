@@ -509,7 +509,7 @@ function New-Bing {
 
 function New-Google {
     Write-Host "Searched keywords using Google."
-    $url = "https://www.google.com/?q=$args"
+    $url = "http://www.google.com/search?q=$args"
     & $Chrome $url
 }
 
