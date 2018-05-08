@@ -58,6 +58,7 @@ New-Alias -name msdn -value New-MSDN -description "MSDN" -option ReadOnly
 
 New-Alias -name gate -value Start-OpenGate -description "Open gate" -option ReadOnly
 
+New-Alias -name rst -value Start-RestartComputer -description "Restart Computer" -option ReadOnly
 New-Alias -name clipc -value Start-ClipCurrentPath -description "Clip Current Path" -option ReadOnly
 
 New-Alias -name commands -value Start-ShowCommands -description "Show Commands" -option ReadOnly

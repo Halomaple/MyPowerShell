@@ -82,6 +82,7 @@ function Start-Up{
         open [url] - 'Open url in browser'
         dict [word] - 'Youdao dict'
         can [word] - 'Can I Use'
+        rst - 'Restart Computer'
         clipc - 'Clip Current Path'
 
     Search:
@@ -532,4 +533,8 @@ function Start-OpenGate {
 
 function Start-ClipCurrentPath {
     $pwd.Path | clip
+}
+
+function Start-RestartComputer {
+    & shutdown /r /t $args[0]
 }
