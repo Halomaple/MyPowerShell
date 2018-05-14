@@ -298,7 +298,7 @@ function Start-TeleoptiShowCurrentToggle {
             Write-Host $line
         }
 
-        if($line -match "ToggleModeAppSetting") {
+        if($line -match "Remarked line below must be kept") {
             $correctStartPosition = $true
         }
     }
