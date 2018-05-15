@@ -31,8 +31,6 @@ function Start-Up{
         vs - 'Launch visual studio'
         kvs - 'Kill visual studio'
         rvs - 'Restart visual studio'
-        kis - 'Kill IIS Express'
-        cis - 'Clear IIS Express Cache'
         sql - 'Luanch sql server management studio'
 
     Folders:
@@ -42,10 +40,6 @@ function Start-Up{
         styleh - 'StyleGuide Halomaple'
         stylet - 'StyleGuide Teleopti'
         psf - 'My PowerShell Folder'
-
-    Folders Paths:
-        styleh-p - 'StyleGuide Halomaple Path'
-        stylet-p - 'StyleGuide Teleopti Path'
 
     Network:
         vpn - 'Enable Teleopti VPN'
@@ -67,6 +61,8 @@ function Start-Up{
     Projects:
         fat - 'Run Teleopti Fat Client'
         kfat - 'Kill Teleopti Fat Client'
+        kis - 'Kill IIS Express'
+        cis - 'Clear IIS Express Cache'
         clean - 'Clean IIS and kill Teleopti Fat Client'
 
     Websites:

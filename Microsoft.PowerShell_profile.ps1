@@ -15,9 +15,6 @@ New-Alias -name styleh -value Enter-StyleGuideHalomaple -description "StyleGuide
 New-Alias -name stylet -value Enter-StyleGuideTeleopti -description "StyleGuide-Teleopti" -option ReadOnly
 New-Alias -name psf -value Enter-PowerShellFolder -description "My PowerShell Folder" -option ReadOnly
 
-New-Alias -name styleh-p -value Enter-StyleGuideHalomaplePath -description "Get StyleGuide-Halomaple Path" -option ReadOnly
-New-Alias -name stylet-p -value Enter-StyleGuideTeleoptiPath -description "Get StyleGuide-Teleopti Path" -option ReadOnly
-
 New-Alias -name vpn -value Enable-TeleoptiVpn -description "Enable Teleopti VPN" -option ReadOnly
 New-Alias -name vpn/f -value Disable-TeleoptiVpn -description "Disable Teleopti VPN" -option ReadOnly
 New-Alias -name vpn? -value Get-VpnStatus -description "Get VPN Status" -option ReadOnly
