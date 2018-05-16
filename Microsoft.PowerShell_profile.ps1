@@ -1,4 +1,5 @@
 Import-Module MyModule
+Import-Module Internal
 
 New-Alias -name vs -value Start-VS -description "Launch visual studio" -option ReadOnly
 New-Alias -name kvs -value Start-KillVS -description "Kill visual studio" -option ReadOnly
@@ -42,6 +43,7 @@ New-Alias -name intranet -value New-Intranet -description "Intranet" -option Rea
 New-Alias -name rnd -value New-IntranetRND -description "IntranetRND" -option ReadOnly
 
 New-Alias -name github -value New-Github -description "Github" -option ReadOnly
+New-Alias -name teamj -value New-TeamViewerJ -description "TeamViewer J" -option ReadOnly
 
 New-Alias -name open -value New-OpenUrlInBrowser -description "Open url in browser" -option ReadOnly
 New-Alias -name dict -value New-YoudaoDict -description "Youdao dict" -option ReadOnly

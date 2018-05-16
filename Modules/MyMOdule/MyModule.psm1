@@ -80,6 +80,7 @@ function Start-Up{
         can [word] - 'Can I Use'
         rst - 'Restart Computer'
         clipc - 'Clip Current Path'
+        teamj - 'TeamView J'
 
     Search:
         baidu [keywords] - 'Search keywords using Baidu'
