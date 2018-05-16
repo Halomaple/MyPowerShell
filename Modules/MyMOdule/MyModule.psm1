@@ -80,6 +80,7 @@ function Start-Up{
         can [word] - 'Can I Use'
         rst - 'Restart Computer'
         clipc - 'Clip Current Path'
+        kteam - 'Kill TeamViewer'
         teamj - 'TeamView J'
 
     Search:
@@ -427,6 +428,18 @@ function Start-ConnectAzure {
 
 function Get-FatClientProcess {
     return Get-Process $TeleoptiFatClientProcessName
+}
+
+function Start-KillTeamViewer {
+    $teamviewer = Get-Process "TeamViewer"
+    if($teamviewer) {
+        & kill $teamviewer -Force
+    }
+
+    $teamviewer = Get-Process "TeamViewer_Service"
+    if($teamviewer) {
+        & kill $teamviewer -Force
+    }
 }
 
 function New-OpenUrlInBrowser {
