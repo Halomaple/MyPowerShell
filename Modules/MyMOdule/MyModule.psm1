@@ -238,11 +238,10 @@ function Start-TeleoptiToggleALL {
     $fileOrigin = Get-Content "$TeleoptiWeb\web.config"
 
     Foreach ($line in $fileOrigin) {
-        $fileModified += $line
-
-        if($line -match "ToggleModeAppSetting") {
-            $fileModified += '    <add key="ToggleMode" value="ALL" />'
+        if($line -match "UseRelativeConfiguration") {
+            $fileModified += '        <add key="ToggleMode" value="ALL" />'
         }
+        $fileModified += $line
     }
 
     $fileModified | Out-File -Encoding "UTF8" "$TeleoptiWeb\web.config"
@@ -256,11 +255,10 @@ function Start-TeleoptiToggleRC {
     $fileOrigin = Get-Content "$TeleoptiWeb\web.config"
 
     Foreach ($line in $fileOrigin) {
-        $fileModified += $line
-
-        if($line -match "ToggleModeAppSetting") {
-            $fileModified += '    <add key="ToggleMode" value="RC" />'
+        if($line -match "UseRelativeConfiguration") {
+            $fileModified += '        <add key="ToggleMode" value="RC" />'
         }
+        $fileModified += $line
     }
 
     $fileModified | Out-File -Encoding "UTF8" "$TeleoptiWeb\web.config"
@@ -274,11 +272,10 @@ function Start-TeleoptiToggleCUSTOMER {
     $fileOrigin = Get-Content "$TeleoptiWeb\web.config"
 
     Foreach ($line in $fileOrigin) {
-        $fileModified += $line
-
-        if($line -match "ToggleModeAppSetting") {
-            $fileModified += '    <add key="ToggleMode" value="CUSTOMER" />'
+        if($line -match "UseRelativeConfiguration") {
+            $fileModified += '        <add key="ToggleMode" value="CUSTOMER" />'
         }
+        $fileModified += $line
     }
 
     $fileModified | Out-File -Encoding "UTF8" "$TeleoptiWeb\web.config"
