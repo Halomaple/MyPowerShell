@@ -430,13 +430,12 @@ function Get-FatClientProcess {
     return Get-Process $TeleoptiFatClientProcessName
 }
 
+function Start-TeamViewer {
+	teamviewer.exe
+}
+
 function Start-KillTeamViewer {
     $teamviewer = Get-Process "TeamViewer"
-    if($teamviewer) {
-        & kill $teamviewer -Force
-    }
-
-    $teamviewer = Get-Process "TeamViewer_Service"
     if($teamviewer) {
         & kill $teamviewer -Force
     }
