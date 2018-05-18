@@ -542,5 +542,10 @@ function Start-ClipCurrentPath {
 }
 
 function Start-RestartComputer {
-    & shutdown /r /t $args[0]
+    if($args[0]) {
+        & shutdown /r /t $args[0]
+    }
+    else {
+        & shutdown /r /t 0
+    }
 }
