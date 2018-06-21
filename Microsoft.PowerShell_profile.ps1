@@ -45,7 +45,9 @@ New-Alias -name rnd -value New-IntranetRND -description "IntranetRND" -option Re
 New-Alias -name github -value New-Github -description "Github" -option ReadOnly
 New-Alias -name tm -value Start-TeamViewer -description "Launch TeamViewer" -option ReadOnly
 New-Alias -name ktm -value Start-KillTeamViewer -description "Kill TeamViewer" -option ReadOnly
-New-Alias -name tmj -value Start-TeamViewerJ -description "TeamViewer J" -option ReadOnly
+
+New-Alias -name testea -value Start-TestEA -description "Connect to TestEA" -option ReadOnly
+New-Alias -name testea1 -value Start-TestEA1 -description "Connect to TestEA1" -option ReadOnly
 
 New-Alias -name open -value New-OpenUrlInBrowser -description "Open url in browser" -option ReadOnly
 New-Alias -name dict -value New-YoudaoDict -description "Youdao dict" -option ReadOnly
