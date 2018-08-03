@@ -67,6 +67,7 @@ function Start-Up {
 
     Websites:
         kanban - 'Kanban Board'
+        pr - 'Pull Request Board'
         id - 'Work item'
         build - 'Teleopti Build Server'
         styleguide - 'StyleGuide'
@@ -445,6 +446,12 @@ function New-OpenUrlInBrowser {
 
 function New-Kanban {
 	$url1 = "https://teleopti.visualstudio.com/TeleoptiWFM/Code%20monkeys/_backlogs/board/Items"
+	& $Chrome $url1
+	Write-Host "Kanban opened in Chrome."
+}
+
+function New-Kanban {
+	$url1 = "https://teleopti.visualstudio.com/_git/TeleoptiWFM/pullrequests?_a=mine"
 	& $Chrome $url1
 	Write-Host "Kanban opened in Chrome."
 }
