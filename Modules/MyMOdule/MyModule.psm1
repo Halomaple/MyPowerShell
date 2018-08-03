@@ -450,7 +450,7 @@ function New-Kanban {
 	Write-Host "Kanban opened in Chrome."
 }
 
-function New-Kanban {
+function New-PullRequest {
 	$url1 = "https://teleopti.visualstudio.com/_git/TeleoptiWFM/pullrequests?_a=mine"
 	& $Chrome $url1
 	Write-Host "Kanban opened in Chrome."
