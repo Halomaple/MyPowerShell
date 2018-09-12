@@ -16,11 +16,11 @@ $TeleoptiDoor = "$Env:Door"
 $LocalIP = "$Env:LocalIP"
 
 $ConnectAzureScript = "~\Documents\ConnectAzure.ps1"
-$VS = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe"
+$VS = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\devenv.exe"
 $HG = "C:\Program Files\TortoiseHg\thgw.exe"
 $VSProcessName = "devenv"
 $IISExpressProcessName = "iisexpress"
-$SSMS = "C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\Ssms.exe"
+$SSMS = "C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"
 $Chrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
 function Start-Up {
