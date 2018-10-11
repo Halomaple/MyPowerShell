@@ -12,8 +12,8 @@ New-Alias -name azure -value Start-ConnectAzure -description "Connect to Azure" 
 New-Alias -name t -value Enter-Teleopti -description "Teleopti Root" -option ReadOnly
 New-Alias -name debug -value Enter-TeleoptiDebug -description "Teleopti Debug" -option ReadOnly
 New-Alias -name wfm -value Enter-TeleoptiWFM -description "Teleopti WFM" -option ReadOnly
-New-Alias -name styleh -value Enter-StyleGuideHalomaple -description "StyleGuide-Halomaple" -option ReadOnly
-New-Alias -name stylet -value Enter-StyleGuideTeleopti -description "StyleGuide-Teleopti" -option ReadOnly
+New-Alias -name sh -value Enter-StyleGuideHalomaple -description "StyleGuide-Halomaple" -option ReadOnly
+New-Alias -name st -value Enter-StyleGuideTeleopti -description "StyleGuide-Teleopti" -option ReadOnly
 New-Alias -name psf -value Enter-PowerShellFolder -description "My PowerShell Folder" -option ReadOnly
 
 New-Alias -name vpn -value Enable-TeleoptiVpn -description "Enable Teleopti VPN" -option ReadOnly

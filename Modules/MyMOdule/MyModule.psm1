@@ -37,8 +37,8 @@ function Start-Up {
         t - 'Teleopti Root'
         debug - 'Teleopti Debug'
         wfm - 'Teleopti WFM'
-        styleh - 'StyleGuide Halomaple'
-        stylet - 'StyleGuide Teleopti'
+        sh - 'StyleGuide Halomaple'
+        st - 'StyleGuide Teleopti'
         psf - 'My PowerShell Folder'
 
     Network:
