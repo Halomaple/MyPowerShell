@@ -21,81 +21,84 @@ $HG = "C:\Program Files\TortoiseHg\thgw.exe"
 $VSProcessName = "devenv"
 $IISExpressProcessName = "iisexpress"
 $SSMS = "C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"
+$Gitk = "C:\Program Files\Git\cmd\gitk.exe"
+$Param = " --full-history"
 $Chrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
 function Start-Up {
 	Write-Host "
-    Good to see you!
+	Good to see you!
 
-    Programs:
-        vs - 'Launch visual studio'
-        kvs - 'Kill visual studio'
-        rvs - 'Restart visual studio'
-        sql - 'Luanch sql server management studio'
+	Programs:
+		vs - 'Launch visual studio'
+		kvs - 'Kill visual studio'
+		rvs - 'Restart visual studio'
+		sql - 'Luanch sql server management studio'
+		gitk - 'Gitk with full history'
 
-    Folders:
-        t - 'Teleopti Root'
-        debug - 'Teleopti Debug'
-        wfm - 'Teleopti WFM'
-        sh - 'StyleGuide Halomaple'
-        st - 'StyleGuide Teleopti'
-        psf - 'My PowerShell Folder'
+	Folders:
+		t - 'Teleopti Root'
+		debug - 'Teleopti Debug'
+		wfm - 'Teleopti WFM'
+		sh - 'StyleGuide Halomaple'
+		st - 'StyleGuide Teleopti'
+		psf - 'My PowerShell Folder'
 
-    Network:
-        vpn - 'Enable Teleopti VPN'
-        vpn/f - 'Disable Teleopti VPN'
-        vpn? - 'Get VPN Status'
+	Network:
+		vpn - 'Enable Teleopti VPN'
+		vpn/f - 'Disable Teleopti VPN'
+		vpn? - 'Get VPN Status'
 
-    Bat:
-        toa - 'Change toggle mode to All'
-        tor - 'Change toggle mode to RC'
-        toc - 'Change toggle mode to Customer'
-        toggle - 'Current toggle mode'
-        restore - 'Teleopti Restore to Local'
-        infratest - 'Teleopti Teleopti InfratestConfig'
-        fixconfig - 'Teleopti Teleopti FixMyConfigFlow'
-        mobile - 'Enable mobile access of TeleoptiWFM/Web'
-        desktop - 'Enable desktop access only of TeleoptiWFM/Web'
-        azure - 'Connect to Microsoft Azure Virtual Machine'
+	Bat:
+		toa - 'Change toggle mode to All'
+		tor - 'Change toggle mode to RC'
+		toc - 'Change toggle mode to Customer'
+		toggle - 'Current toggle mode'
+		restore - 'Teleopti Restore to Local'
+		infratest - 'Teleopti Teleopti InfratestConfig'
+		fixconfig - 'Teleopti Teleopti FixMyConfigFlow'
+		mobile - 'Enable mobile access of TeleoptiWFM/Web'
+		desktop - 'Enable desktop access only of TeleoptiWFM/Web'
+		azure - 'Connect to Microsoft Azure Virtual Machine'
 
-    Projects:
-        fat - 'Run Teleopti Fat Client'
-        kfat - 'Kill Teleopti Fat Client'
-        kis - 'Kill IIS Express'
-        cis - 'Clear IIS Express Cache'
-        clean - 'Clean IIS and kill Teleopti Fat Client'
+	Projects:
+		fat - 'Run Teleopti Fat Client'
+		kfat - 'Kill Teleopti Fat Client'
+		kis - 'Kill IIS Express'
+		cis - 'Clear IIS Express Cache'
+		clean - 'Clean IIS and kill Teleopti Fat Client'
 
-    Websites:
-        kanban - 'Kanban Board'
-        pr - 'Pull Request Board'
-        id - 'Work item'
-        build - 'Teleopti Build Server'
-        styleguide - 'StyleGuide'
-        intranet - 'Intranet'
-        rnd - 'IntranetRND'
-        github - 'Github'
+	Websites:
+		kanban - 'Kanban Board'
+		pr - 'Pull Request Board'
+		id - 'Work item'
+		build - 'Teleopti Build Server'
+		styleguide - 'StyleGuide'
+		intranet - 'Intranet'
+		rnd - 'IntranetRND'
+		github - 'Github'
 
-    Tools:
-        open [url] - 'Open url in browser'
-        dict [word] - 'Youdao dict'
-        can [word] - 'Can I Use'
-        rst - 'Restart Computer'
-        clipc - 'Clip Current Path'
+	Tools:
+		open [url] - 'Open url in browser'
+		dict [word] - 'Youdao dict'
+		can [word] - 'Can I Use'
+		rst - 'Restart Computer'
+		clipc - 'Clip Current Path'
 
-    Search:
-        baidu [keywords] - 'Search keywords using Baidu'
-        bing [keywords] - 'Search keywords using Bing'
-        google [keywords] - 'Search keywords using Google'
-        stackoverflow - 'StackOverflow'
-        msdn - 'MSDN'
+	Search:
+		baidu [keywords] - 'Search keywords using Baidu'
+		bing [keywords] - 'Search keywords using Bing'
+		google [keywords] - 'Search keywords using Google'
+		stackoverflow - 'StackOverflow'
+		msdn - 'MSDN'
 
-    Gate:
-        gate - 'Open Gate'
+	Gate:
+		gate - 'Open Gate'
 
-    PS:
-        commands - 'Show Commands'
-        update - 'Update Module'
-    "
+	PS:
+		commands - 'Show Commands'
+		update - 'Update Module'
+	"
 }
 
 Start-Up
@@ -164,6 +167,9 @@ function Start-Clean () {
 
 function Start-SSMS {
 	Start-Process $SSMS
+}
+function Start-Gitk {
+	Start-Process $Gitk $Param
 }
 
 function Enter-Teleopti {
@@ -244,7 +250,7 @@ function Start-TeleoptiToggleALL {
 
 	Foreach ($line in $fileOrigin) {
 		if ($line -match "UseRelativeConfiguration") {
-			$fileModified += '        <add key="ToggleMode" value="ALL" />'
+			$fileModified += '		<add key="ToggleMode" value="ALL" />'
 		}
 		$fileModified += $line
 	}
@@ -261,7 +267,7 @@ function Start-TeleoptiToggleRC {
 
 	Foreach ($line in $fileOrigin) {
 		if ($line -match "UseRelativeConfiguration") {
-			$fileModified += '        <add key="ToggleMode" value="RC" />'
+			$fileModified += '		<add key="ToggleMode" value="RC" />'
 		}
 		$fileModified += $line
 	}
@@ -278,7 +284,7 @@ function Start-TeleoptiToggleCUSTOMER {
 
 	Foreach ($line in $fileOrigin) {
 		if ($line -match "UseRelativeConfiguration") {
-			$fileModified += '        <add key="ToggleMode" value="CUSTOMER" />'
+			$fileModified += '		<add key="ToggleMode" value="CUSTOMER" />'
 		}
 		$fileModified += $line
 	}

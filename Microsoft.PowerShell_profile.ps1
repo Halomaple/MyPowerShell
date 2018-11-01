@@ -7,6 +7,7 @@ New-Alias -name rvs -value Start-RestartVS -description "Restart visual studio" 
 New-Alias -name kis -value Start-KillIISExpress -description "Kill IIS Express" -option ReadOnly
 New-Alias -name cis -value Start-ClearIISExpressCache -description "Clear IIS Express Cache" -option ReadOnly
 New-Alias -name sql -value Start-SSMS -description "Launch sql server management studio" -option ReadOnly
+New-Alias -name gitk -value Start-Gitk -description "Gitk with full history" -option ReadOnly
 
 New-Alias -name azure -value Start-ConnectAzure -description "Connect to Azure" -option ReadOnly
 New-Alias -name t -value Enter-Teleopti -description "Teleopti Root" -option ReadOnly
