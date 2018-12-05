@@ -21,7 +21,6 @@ $HG = "C:\Program Files\TortoiseHg\thgw.exe"
 $VSProcessName = "devenv"
 $IISExpressProcessName = "iisexpress"
 $SSMS = "C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"
-$Gitk = "C:\Program Files\Git\cmd\gitk.exe"
 $Param = " --full-history"
 $Chrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
@@ -34,7 +33,6 @@ function Start-Up {
 		kvs - 'Kill visual studio'
 		rvs - 'Restart visual studio'
 		sql - 'Luanch sql server management studio'
-		gitk - 'Gitk with full history'
 
 	Folders:
 		t - 'Teleopti Root'
@@ -167,9 +165,6 @@ function Start-Clean () {
 
 function Start-SSMS {
 	Start-Process $SSMS
-}
-function Start-Gitk {
-	Start-Process $Gitk $Param
 }
 
 function Enter-Teleopti {
