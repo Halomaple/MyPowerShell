@@ -86,7 +86,7 @@ function Start-Up {
 	Search:
 		baidu [keywords] - 'Search keywords using Baidu'
 		bing [keywords] - 'Search keywords using Bing'
-		google [keywords] - 'Search keywords using Google'
+		g [keywords] - 'Search keywords using Google'
 		stackoverflow - 'StackOverflow'
 		msdn - 'MSDN'
 

@@ -54,7 +54,7 @@ New-Alias -name can -value New-CanIUse -description "Baidu" -option ReadOnly
 
 New-Alias -name baidu -value New-Baidu -description "Baidu" -option ReadOnly
 New-Alias -name bing -value New-Bing -description "Bing" -option ReadOnly
-New-Alias -name google -value New-Google -description "Google" -option ReadOnly
+New-Alias -name g -value New-Google -description "Google" -option ReadOnly
 New-Alias -name stackoverflow -value New-StackOverflow -description "StackOverflow" -option ReadOnly
 New-Alias -name msdn -value New-MSDN -description "MSDN" -option ReadOnly
 
