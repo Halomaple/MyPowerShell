@@ -446,7 +446,7 @@ function New-OpenUrlInBrowser {
 }
 
 function New-Kanban {
-	$url1 = "https://teleopti.visualstudio.com/TeleoptiWFM/Code%20monkeys/_backlogs/board/Items"
+	$url1 = "https://teleopti.visualstudio.com/TeleoptiWFM/_boards/board/t/Pandas/Items"
 	& $Chrome $url1
 	Write-Host "Kanban opened in Chrome."
 }
