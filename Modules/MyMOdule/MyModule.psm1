@@ -8,8 +8,6 @@ $TeleoptiFatClientPath = $Teleopti + "Teleopti.Ccc.SmartClientPortal\Teleopti.Cc
 $TeleoptiFatClientProcessName = "Teleopti.Ccc.SmartClientPortal.Shell"
 $TeleoptiVSConfig = $Teleopti + ".vs\config"
 $TeleoptiWebPort = "52858"
-$StyleGuideHalomaple = "C:\styleguide-halomaple"
-$StyleGuideTeleopti = "C:\styleguide-teleopti"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
 $TeleoptiVpn = "vpn"
 $TeleoptiDoor = "$Env:Door"
@@ -38,8 +36,6 @@ function Start-Up {
 		t - 'Teleopti Root'
 		debug - 'Teleopti Debug'
 		wfm - 'Teleopti WFM'
-		sh - 'StyleGuide Halomaple'
-		st - 'StyleGuide Teleopti'
 		psf - 'My PowerShell Folder'
 
 	Network:
@@ -71,7 +67,6 @@ function Start-Up {
 		pr - 'Pull Request Board'
 		id - 'Work item'
 		build - 'Teleopti Build Server'
-		styleguide - 'StyleGuide'
 		intranet - 'Intranet'
 		rnd - 'IntranetRND'
 		github - 'Github'
@@ -177,14 +172,6 @@ function Enter-TeleoptiDebug {
 
 function Enter-TeleoptiWFM {
 	Set-Location $TeleoptiWFM
-}
-
-function Enter-StyleGuideHalomaple {
-	Set-Location $StyleGuideHalomaple
-}
-
-function Enter-StyleGuideTeleopti {
-	Set-Location $StyleGuideTeleopti
 }
 
 function Enter-PowerShellFolder {
@@ -468,12 +455,6 @@ function New-BuildServer {
 	$url = "http://buildsrv01/overview.html"
 	& $Chrome $url
 	Write-Host "BuildServer opened in Chrome."
-}
-
-function New-StyleGuide {
-	$url = "http://teleopti.github.io/styleguide/styleguide/index.html"
-	& $Chrome $url
-	Write-Host "StyleGuide opened in Chrome."
 }
 
 function New-Intranet {
