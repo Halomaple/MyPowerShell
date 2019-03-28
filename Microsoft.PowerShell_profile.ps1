@@ -9,6 +9,7 @@ New-Alias -name cis -value Start-ClearIISExpressCache -description "Clear IIS Ex
 New-Alias -name sql -value Start-SSMS -description "Launch sql server management studio" -option ReadOnly
 
 New-Alias -name azure -value Start-ConnectAzure -description "Connect to Azure" -option ReadOnly
+New-Alias -name ap -value New-AzurePortal -description "Azure Portal" -option ReadOnly
 New-Alias -name t -value Enter-Teleopti -description "Teleopti Root" -option ReadOnly
 New-Alias -name debug -value Enter-TeleoptiDebug -description "Teleopti Debug" -option ReadOnly
 New-Alias -name wfm -value Enter-TeleoptiWFM -description "Teleopti WFM" -option ReadOnly

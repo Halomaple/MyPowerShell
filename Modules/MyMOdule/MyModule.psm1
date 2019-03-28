@@ -426,6 +426,12 @@ function Get-FatClientProcess {
 	return Get-Process $TeleoptiFatClientProcessName
 }
 
+function New-AzurePortal {
+	$url = "https://portal.azure.com/"
+	& $Chrome $url
+	Write-Host "Azure Portal opened in Chrome."
+}
+
 function New-OpenUrlInBrowser {
 	$url = "http://$($args[0])"
 	Write-Host "Opened $url in browser"
