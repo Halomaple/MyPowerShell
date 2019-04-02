@@ -1,5 +1,4 @@
 Import-Module MyModule
-Import-Module Internal
 
 New-Alias -name vs -value Start-VS -description "Launch visual studio" -option ReadOnly
 New-Alias -name kvs -value Start-KillVS -description "Kill visual studio" -option ReadOnly
@@ -38,13 +37,8 @@ New-Alias -name kanban -value New-Kanban -description "Kanban Board" -option Rea
 New-Alias -name pr -value New-PullRequest -description "Pull Request Board" -option ReadOnly
 New-Alias -name id -value New-WorkItem -description "Work item" -option ReadOnly
 New-Alias -name build -value New-BuildServer -description "Teleopti Build Server" -option ReadOnly
-New-Alias -name intranet -value New-Intranet -description "Intranet" -option ReadOnly
-New-Alias -name rnd -value New-IntranetRND -description "IntranetRND" -option ReadOnly
 
 New-Alias -name github -value New-Github -description "Github" -option ReadOnly
-
-New-Alias -name testea -value Start-TestEA -description "Connect to TestEA" -option ReadOnly
-New-Alias -name testea1 -value Start-TestEA1 -description "Connect to TestEA1" -option ReadOnly
 
 New-Alias -name open -value New-OpenUrlInBrowser -description "Open url in browser" -option ReadOnly
 New-Alias -name dict -value New-YoudaoDict -description "Youdao dict" -option ReadOnly

@@ -1,5 +1,4 @@
 $Teleopti = "C:\teleopti\"
-$TeleoptiDevUtilities = "C:\DevUtilities"
 $TeleoptiDebug = $Teleopti + ".debug-Setup"
 $TeleoptiWeb = $Teleopti + "Teleopti.Ccc.Web\Teleopti.Ccc.Web"
 $TeleoptiAuthenticationBridge = $Teleopti + "Teleopti.Ccc.Web.AuthenticationBridge"
@@ -15,11 +14,9 @@ $LocalIP = "$Env:LocalIP"
 
 $ConnectAzureScript = "~\Documents\ConnectAzure.ps1"
 $VS = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\devenv.exe"
-$HG = "C:\Program Files\TortoiseHg\thgw.exe"
 $VSProcessName = "devenv"
 $IISExpressProcessName = "iisexpress"
 $SSMS = "C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"
-$Param = " --full-history"
 $Chrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
 function Start-Up {
@@ -67,8 +64,6 @@ function Start-Up {
 		pr - 'Pull Request Board'
 		id - 'Work item'
 		build - 'Teleopti Build Server'
-		intranet - 'Intranet'
-		rnd - 'IntranetRND'
 		github - 'Github'
 
 	Tools:
@@ -461,18 +456,6 @@ function New-BuildServer {
 	$url = "http://buildsrv01/overview.html"
 	& $Chrome $url
 	Write-Host "BuildServer opened in Chrome."
-}
-
-function New-Intranet {
-	$url = "https://intranet.teleopti.com/"
-	& $Chrome $url
-	Write-Host "Intranet opened in Chrome."
-}
-
-function New-IntranetRND {
-	$url = "https://intranet.teleopti.com/teleoptiwfm/rnd~2/"
-	& $Chrome $url
-	Write-Host "Intranet RND opened in Chrome."
 }
 
 function New-Github {
