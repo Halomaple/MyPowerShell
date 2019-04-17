@@ -33,6 +33,8 @@ New-Alias -name kfat -value Start-KillTeleoptiFatClient -description "Kill Teleo
 
 New-Alias -name clean -value Start-Clean -description "Clean IIS and kill Teleopti Fat Client" -option ReadOnly
 
+New-Alias -name clearlog -value Start-ClearEventLogs -description "Clear Event Logs" -option ReadOnly
+
 New-Alias -name kanban -value New-Kanban -description "Kanban Board" -option ReadOnly
 New-Alias -name pr -value New-PullRequest -description "Pull Request Board" -option ReadOnly
 New-Alias -name id -value New-WorkItem -description "Work item" -option ReadOnly
