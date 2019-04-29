@@ -31,6 +31,8 @@ New-Alias -name desktop -value  Start-TeleoptiEnableDesktopAccessOnly -descripti
 New-Alias -name fat -value Start-TeleoptiFatClient -description "Run Teleopti Fat Client" -option ReadOnly
 New-Alias -name kfat -value Start-KillTeleoptiFatClient -description "Kill Teleopti Fat Client" -option ReadOnly
 
+New-Alias -name ev -value Start-EventViewer -description "Open Event Viewer" -option ReadOnly
+
 New-Alias -name clean -value Start-Clean -description "Clean IIS and kill Teleopti Fat Client" -option ReadOnly
 
 New-Alias -name clearlog -value Start-ClearEventLogs -description "Clear Event Logs" -option ReadOnly

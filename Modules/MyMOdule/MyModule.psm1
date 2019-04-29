@@ -73,6 +73,7 @@ function Start-Up {
 		can [word] - 'Can I Use'
 		rst - 'Restart Computer'
 		clipc - 'Clip Current Path'
+		ev - 'Open Event Viewer'
 
 	Search:
 		baidu [keywords] - 'Search keywords using Baidu'
@@ -418,6 +419,10 @@ function Start-KillTeleoptiFatClient {
  else {
 		Write-Host "Teleopti Fat Client has not started"
 	}
+}
+
+function Start-EventViewer {
+	& 'eventvwr'
 }
 
 function Start-ConnectAzure {
