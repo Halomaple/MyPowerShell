@@ -74,6 +74,7 @@ function Start-Up {
 		rst - 'Restart Computer'
 		clipc - 'Clip Current Path'
 		ev - 'Open Event Viewer'
+		log - 'Logging Teleopti Events'
 
 	Search:
 		baidu [keywords] - 'Search keywords using Baidu'
@@ -423,6 +424,10 @@ function Start-KillTeleoptiFatClient {
 
 function Start-EventViewer {
 	& 'eventvwr'
+}
+
+function Start-LoggingTeleoptiEvents {
+	get-eventlog -LogName Application -Newest $args[0] -Source *Teleopti* | select Index, EntryType, InstanceId, Message | format-list
 }
 
 function Start-ConnectAzure {
