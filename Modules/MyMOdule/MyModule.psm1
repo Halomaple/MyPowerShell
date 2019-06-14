@@ -59,6 +59,7 @@ function Start-Up {
 		cis - 'Clear IIS Express Cache'
 		clean - 'Clean IIS and kill Teleopti Fat Client'
 		clearlog - 'Clear Event Logs'
+		k - 'Kill process'
 
 	Websites:
 		kanban - 'Kanban Board'
@@ -160,6 +161,10 @@ function Start-ClearEventLogs () {
 	& Clear-EventLog "Application"
 	& Clear-EventLog "Security"
 	& Clear-EventLog "System"
+}
+
+function Start-KillProcess () {
+	& kill -Name $args[0]
 }
 
 function Start-SSMS {

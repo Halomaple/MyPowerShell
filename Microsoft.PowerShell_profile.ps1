@@ -35,8 +35,8 @@ New-Alias -name ev -value Start-EventViewer -description "Open Event Viewer" -op
 New-Alias -name log -value Start-LoggingTeleoptiEvents -description "Logging Teleopti Events" -option ReadOnly
 
 New-Alias -name clean -value Start-Clean -description "Clean IIS and kill Teleopti Fat Client" -option ReadOnly
-
 New-Alias -name clearlog -value Start-ClearEventLogs -description "Clear Event Logs" -option ReadOnly
+New-Alias -name k -value Start-KillProcess -description "Kill process" -option ReadOnly
 
 New-Alias -name kanban -value New-Kanban -description "Kanban Board" -option ReadOnly
 New-Alias -name pr -value New-PullRequest -description "Pull Request Board" -option ReadOnly
