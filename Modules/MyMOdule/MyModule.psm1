@@ -2,7 +2,6 @@ $Teleopti = "C:\teleopti\"
 $TeleoptiDebug = $Teleopti + ".debug-Setup"
 $TeleoptiWeb = $Teleopti + "Teleopti.Ccc.Web\Teleopti.Ccc.Web"
 $TeleoptiAuthenticationBridge = $Teleopti + "Teleopti.Ccc.Web.AuthenticationBridge"
-$TeleoptiWFM = $Teleopti + "Teleopti.Ccc.Web\Teleopti.Ccc.Web\WFM"
 $TeleoptiFatClientPath = $Teleopti + "Teleopti.Ccc.SmartClientPortal\Teleopti.Ccc.SmartClientPortal.Shell\bin\Debug\Teleopti.Ccc.SmartClientPortal.Shell.exe"
 $TeleoptiFatClientProcessName = "Teleopti.Ccc.SmartClientPortal.Shell"
 $TeleoptiVSConfig = $Teleopti + ".vs\config"
@@ -32,7 +31,7 @@ function Start-Up {
 	Folders:
 		t - 'Teleopti Root'
 		debug - 'Teleopti Debug'
-		wfm - 'Teleopti WFM'
+		web - 'Teleopti Web'
 		psf - 'My PowerShell Folder'
 
 	Network:
@@ -179,8 +178,8 @@ function Enter-TeleoptiDebug {
 	Set-Location $TeleoptiDebug
 }
 
-function Enter-TeleoptiWFM {
-	Set-Location $TeleoptiWFM
+function Enter-TeleoptiWeb {
+	Set-Location $TeleoptiWeb
 }
 
 function Enter-PowerShellFolder {
