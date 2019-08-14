@@ -479,6 +479,12 @@ function New-BuildServer {
 	Write-Host "BuildServer opened in Chrome."
 }
 
+function New-TeamsWebApp {
+	$url = "https://teams.microsoft.com"
+	& $Chrome $url
+	Write-Host "Teams Web App opened in Chrome."
+}
+
 function New-Github {
 	$url = "https://github.com/"
 	& $Chrome $url

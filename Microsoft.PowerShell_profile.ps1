@@ -42,6 +42,7 @@ New-Alias -name kanban -value New-Kanban -description "Kanban Board" -option Rea
 New-Alias -name pr -value New-PullRequest -description "Pull Request Board" -option ReadOnly
 New-Alias -name id -value New-WorkItem -description "Work item" -option ReadOnly
 New-Alias -name build -value New-BuildServer -description "Teleopti Build Server" -option ReadOnly
+New-Alias -name teams -value New-TeamsWebApp -description "Teams Web App" -option ReadOnly
 
 New-Alias -name github -value New-Github -description "Github" -option ReadOnly
 
