@@ -7,34 +7,12 @@ New-Alias -name kis -value Start-KillIISExpress -description "Kill IIS Express" 
 New-Alias -name cis -value Start-ClearIISExpressCache -description "Clear IIS Express Cache" -option ReadOnly
 New-Alias -name sql -value Start-SSMS -description "Launch sql server management studio" -option ReadOnly
 
-New-Alias -name azure -value Start-ConnectAzure -description "Connect to Azure" -option ReadOnly
-New-Alias -name ap -value New-AzurePortal -description "Azure Portal" -option ReadOnly
-New-Alias -name t -value Enter-Teleopti -description "Teleopti Root" -option ReadOnly
-New-Alias -name debug -value Enter-TeleoptiDebug -description "Teleopti Debug" -option ReadOnly
-New-Alias -name web -value Enter-TeleoptiWeb -description "Teleopti Web" -option ReadOnly
 New-Alias -name psf -value Enter-PowerShellFolder -description "My PowerShell Folder" -option ReadOnly
 
-New-Alias -name vpn -value Enable-TeleoptiVpn -description "Enable Teleopti VPN" -option ReadOnly
-New-Alias -name vpn/f -value Disable-TeleoptiVpn -description "Disable Teleopti VPN" -option ReadOnly
-New-Alias -name vpn? -value Get-VpnStatus -description "Get VPN Status" -option ReadOnly
-
-New-Alias -name toa -value  Start-TeleoptiToggleALL -description "Change toggle mode to ALL" -option ReadOnly
-New-Alias -name tor -value  Start-TeleoptiToggleRC -description "Change toggle mode to RC" -option ReadOnly
-New-Alias -name toc -value  Start-TeleoptiToggleCUSTOMER -description "Change toggle mode to CUSTOMER" -option ReadOnly
-New-Alias -name toggle -value  Start-TeleoptiShowCurrentToggle -description "Current toggle mode: " -option ReadOnly
-New-Alias -name restore -value  Start-TeleoptiRestoreToLocal -description "Teleopti Restore to Local" -option ReadOnly
-New-Alias -name infratest -value  Start-TeleoptiInfratestConfig -description "Teleopti InfratestConfig" -option ReadOnly
-New-Alias -name fixconfig -value  Start-TeleoptiFixMyConfigFlow -description "Teleopti FixMyConfigFlow" -option ReadOnly
-New-Alias -name mobile -value  Start-TeleoptiEnableMobileAccess -description "Enable mobile access of TeleoptiWFM/Web" -option ReadOnly
-New-Alias -name desktop -value  Start-TeleoptiEnableDesktopAccessOnly -description "Enable desktop access only of TeleoptiWFM/Web" -option ReadOnly
-
-New-Alias -name fat -value Start-TeleoptiFatClient -description "Run Teleopti Fat Client" -option ReadOnly
-New-Alias -name kfat -value Start-KillTeleoptiFatClient -description "Kill Teleopti Fat Client" -option ReadOnly
-
 New-Alias -name ev -value Start-EventViewer -description "Open Event Viewer" -option ReadOnly
-New-Alias -name log -value Start-LoggingTeleoptiEvents -description "Logging Teleopti Events" -option ReadOnly
+New-Alias -name log -value Start-LoggingEvents -description "Logging Events" -option ReadOnly
 
-New-Alias -name clean -value Start-Clean -description "Clean IIS and kill Teleopti Fat Client" -option ReadOnly
+New-Alias -name clean -value Start-Clean -description "Clean IIS" -option ReadOnly
 New-Alias -name clearlog -value Start-ClearEventLogs -description "Clear Event Logs" -option ReadOnly
 New-Alias -name k -value Start-KillProcess -description "Kill process" -option ReadOnly
 New-Alias -name kq -value Start-KillQQProcess -description "Kill QQ" -option ReadOnly
@@ -44,7 +22,6 @@ New-Alias -name kx -value Start-KillThunderProcess -description "Kill Thunder" -
 New-Alias -name kanban -value New-Kanban -description "Kanban Board" -option ReadOnly
 New-Alias -name pr -value New-PullRequest -description "Pull Request Board" -option ReadOnly
 New-Alias -name id -value New-WorkItem -description "Work item" -option ReadOnly
-New-Alias -name build -value New-BuildServer -description "Teleopti Build Server" -option ReadOnly
 New-Alias -name teams -value New-TeamsWebApp -description "Teams Web App" -option ReadOnly
 
 New-Alias -name github -value New-Github -description "Github" -option ReadOnly
@@ -58,8 +35,6 @@ New-Alias -name bing -value New-Bing -description "Bing" -option ReadOnly
 New-Alias -name g -value New-Google -description "Google" -option ReadOnly
 New-Alias -name stackoverflow -value New-StackOverflow -description "StackOverflow" -option ReadOnly
 New-Alias -name msdn -value New-MSDN -description "MSDN" -option ReadOnly
-
-New-Alias -name gate -value Start-OpenGate -description "Open gate" -option ReadOnly
 
 New-Alias -name rst -value Start-RestartComputer -description "Restart Computer" -option ReadOnly
 New-Alias -name clipc -value Start-ClipCurrentPath -description "Clip Current Path" -option ReadOnly

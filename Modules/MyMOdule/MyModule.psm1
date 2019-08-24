@@ -1,18 +1,7 @@
-$Teleopti = "C:\teleopti\"
-$TeleoptiDebug = $Teleopti + ".debug-Setup"
-$TeleoptiWeb = $Teleopti + "Teleopti.Ccc.Web\Teleopti.Ccc.Web"
-$TeleoptiAuthenticationBridge = $Teleopti + "Teleopti.Ccc.Web.AuthenticationBridge"
-$TeleoptiFatClientPath = $Teleopti + "Teleopti.Ccc.SmartClientPortal\Teleopti.Ccc.SmartClientPortal.Shell\bin\Debug\Teleopti.Ccc.SmartClientPortal.Shell.exe"
-$TeleoptiFatClientProcessName = "Teleopti.Ccc.SmartClientPortal.Shell"
-$TeleoptiVSConfig = $Teleopti + ".vs\config"
-$TeleoptiWebPort = "52858"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
-$TeleoptiVpn = "vpn"
-$TeleoptiDoor = "$Env:Door"
 $LocalIP = "$Env:LocalIP"
 
-$ConnectAzureScript = "~\Documents\ConnectAzure.ps1"
-$VS = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\devenv.exe"
+$VS = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\devenv.exe"
 $VSProcessName = "devenv"
 $IISExpressProcessName = "iisexpress"
 $SSMS = "C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"
@@ -29,34 +18,14 @@ function Start-Up {
 		sql - 'Luanch sql server management studio'
 
 	Folders:
-		t - 'Teleopti Root'
-		debug - 'Teleopti Debug'
-		web - 'Teleopti Web'
 		psf - 'My PowerShell Folder'
 
-	Network:
-		vpn - 'Enable Teleopti VPN'
-		vpn/f - 'Disable Teleopti VPN'
-		vpn? - 'Get VPN Status'
-
 	Bat:
-		toa - 'Change toggle mode to All'
-		tor - 'Change toggle mode to RC'
-		toc - 'Change toggle mode to Customer'
-		toggle - 'Current toggle mode'
-		restore - 'Teleopti Restore to Local'
-		infratest - 'Teleopti Teleopti InfratestConfig'
-		fixconfig - 'Teleopti Teleopti FixMyConfigFlow'
-		mobile - 'Enable mobile access of TeleoptiWFM/Web'
-		desktop - 'Enable desktop access only of TeleoptiWFM/Web'
-		azure - 'Connect to Microsoft Azure Virtual Machine'
 
 	Projects:
-		fat - 'Run Teleopti Fat Client'
-		kfat - 'Kill Teleopti Fat Client'
 		kis - 'Kill IIS Express'
 		cis - 'Clear IIS Express Cache'
-		clean - 'Clean IIS and kill Teleopti Fat Client'
+		clean - 'Clean IIS'
 		clearlog - 'Clear Event Logs'
 		k - 'Kill process'
 
@@ -64,7 +33,6 @@ function Start-Up {
 		kanban - 'Kanban Board'
 		pr - 'Pull Request Board'
 		id - 'Work item'
-		build - 'Teleopti Build Server'
 		github - 'Github'
 
 	Tools:
@@ -74,7 +42,7 @@ function Start-Up {
 		rst - 'Restart Computer'
 		clipc - 'Clip Current Path'
 		ev - 'Open Event Viewer'
-		log - 'Logging Teleopti Events'
+		log - 'Logging Events'
 
 	Search:
 		baidu [keywords] - 'Search keywords using Baidu'
@@ -82,9 +50,6 @@ function Start-Up {
 		g [keywords] - 'Search keywords using Google'
 		stackoverflow - 'StackOverflow'
 		msdn - 'MSDN'
-
-	Gate:
-		gate - 'Open Gate'
 
 	PS:
 		commands - 'Show Commands'
@@ -152,7 +117,6 @@ function Start-ClearIISExpressCache {
 
 function Start-Clean () {
 	Start-KillIISExpress
-	Start-KillTeleoptiFatClient
 	Start-ClearIISExpressCache
 }
 
@@ -182,276 +146,20 @@ function Start-SSMS {
 	Start-Process $SSMS
 }
 
-function Enter-Teleopti {
-	Set-Location $Teleopti
-}
-
-function Enter-TeleoptiDebug {
-	Set-Location $TeleoptiDebug
-}
-
-function Enter-TeleoptiWeb {
-	Set-Location $TeleoptiWeb
-}
-
 function Enter-PowerShellFolder {
 	Set-Location $PowerShellFolder
-}
-
-function Get-TeleoptiVpn {
-	$interfaceAlias = Get-NetIPAddress | ForEach-Object { $_.InterfaceAlias }
-	if ($interfaceAlias -contains $TeleoptiVpn) {
-		return $TeleoptiVpn;
-	}
-
-	return;
-}
-
-function Disable-TeleoptiVpn {
-	$current = Get-TeleoptiVpn
-	if ($current -ne $null) {
-		Write-Host "Disconnecting from $current..."
-		rasdial $current /DISCONNECT
-	}
-}
-
-function Enable-TeleoptiVpn {
-	$vpn = Get-TeleoptiVpn
-
-	if ($vpn -eq $null) {
-		Write-Host "Attempting to connect to $TeleoptiVpn..."
-		rasdial $TeleoptiVpn
-	}
-	else {
-		Write-Host "Connected to $vpn."
-	}
 }
 
 function Get-VpnStatus {
 	rasdial
 }
 
-function Start-ClearToggleSetting {
-	$fileOrigin = Get-Content "$TeleoptiWeb\web.config"
-	$fileModified = @()
-	Foreach ($line in $fileOrigin) {
-		if ($line -match '<add key="ToggleMode"') {
-		}
-		else {
-			$fileModified += $line
-		}
-	}
-	$fileModified | Out-File -Encoding "UTF8" "$TeleoptiWeb\web.config"
-}
-
-function Start-TeleoptiToggleALL {
-	Start-ClearToggleSetting
-
-	$fileModified = @()
-	$fileOrigin = Get-Content "$TeleoptiWeb\web.config"
-
-	Foreach ($line in $fileOrigin) {
-		if ($line -match "UseRelativeConfiguration") {
-			$fileModified += '		<add key="ToggleMode" value="ALL" />'
-		}
-		$fileModified += $line
-	}
-
-	$fileModified | Out-File -Encoding "UTF8" "$TeleoptiWeb\web.config"
-	Write-Host "Toggled ALL"
-}
-
-function Start-TeleoptiToggleRC {
-	Start-ClearToggleSetting
-
-	$fileModified = @()
-	$fileOrigin = Get-Content "$TeleoptiWeb\web.config"
-
-	Foreach ($line in $fileOrigin) {
-		if ($line -match "UseRelativeConfiguration") {
-			$fileModified += '		<add key="ToggleMode" value="RC" />'
-		}
-		$fileModified += $line
-	}
-
-	$fileModified | Out-File -Encoding "UTF8" "$TeleoptiWeb\web.config"
-	Write-Host "Toggled RC"
-}
-
-function Start-TeleoptiToggleCUSTOMER {
-	Start-ClearToggleSetting
-
-	$fileModified = @()
-	$fileOrigin = Get-Content "$TeleoptiWeb\web.config"
-
-	Foreach ($line in $fileOrigin) {
-		if ($line -match "UseRelativeConfiguration") {
-			$fileModified += '		<add key="ToggleMode" value="CUSTOMER" />'
-		}
-		$fileModified += $line
-	}
-
-	$fileModified | Out-File -Encoding "UTF8" "$TeleoptiWeb\web.config"
-	Write-Host "Toggled CUSTOMER"
-}
-
-function Start-TeleoptiShowCurrentToggle {
-	$file = Get-Content "$TeleoptiWeb\web.config"
-	$correctStartPosition = $false
-	Foreach ($line in $file) {
-		if ($correctStartPosition -and $line -match '<add key="ToggleMode"') {
-			Write-Host "Current toggle mode: "
-			Write-Host $line
-		}
-
-		if ($line -match "Remarked line below must be kept") {
-			$correctStartPosition = $true
-		}
-	}
-}
-
-function Start-TeleoptiEnableMobileAccess {
-	#1. add ip binding
-	$fileModified = @()
-	$fileOrigin = Get-Content "$TeleoptiVSConfig\applicationhost.config"
-
-	$withinWebSiteTag = $false
-	Foreach ($line in $fileOrigin) {
-		$fileModified += $line
-
-		if ($withinWebSiteTag) {
-			if ($line -match "`:$TeleoptiWebPort`:localhost") {
-				$fileModified += $line.Replace("localhost", "$LocalIP")
-			}
-			if ($line -match "Teleopti.Analytics.Portal") {
-				$withinWebSiteTag = $false
-			}
-		}
-
-		if ($line -match "Teleopti.Ccc.Web-Site") {
-			$withinWebSiteTag = $true
-		}
-	}
-	$fileModified | Out-File -Encoding "UTF8" "$TeleoptiVSConfig\applicationhost.config"
-
-	#2. replace localhost with ip in web/web.config
-	$fileModified = @()
-	$fileOrigin = Get-Content "$TeleoptiWeb\web.config"
-
-	Foreach ($line in $fileOrigin) {
-		if ($line -match "localhost`:$TeleoptiWebPort") {
-			$fileModified += $line.Replace("localhost", "$LocalIP")
-		}
-		else {
-			$fileModified += $line
-		}
-	}
-	$fileModified | Out-File -Encoding "UTF8" "$TeleoptiWeb\web.config"
-
-	#3. replace localhost with ip in AuthenticationBridge/web.config
-	$fileModified = @()
-	$fileOrigin = Get-Content "$TeleoptiAuthenticationBridge\web.config"
-
-	Foreach ($line in $fileOrigin) {
-		if ($line -match "localhost`:$TeleoptiWebPort") {
-			$fileModified += $line.Replace("localhost", "$LocalIP")
-		}
-		else {
-			$fileModified += $line
-		}
-	}
-	$fileModified | Out-File -Encoding "UTF8" "$TeleoptiAuthenticationBridge\web.config"
-	Write-Host "Please open http://$LocalIP`:$TeleoptiWebPort/TeleoptiWFM/Web on your mobile when project is running"
-}
-
-function Start-TeleoptiEnableDesktopAccessOnly {
-	#1. remove ip binding
-	$fileModified = @()
-	$fileOrigin = Get-Content "$TeleoptiVSConfig\applicationhost.config"
-
-	Foreach ($line in $fileOrigin) {
-		if ($line -match "`:$TeleoptiWebPort`:$LocalIP") {
-			continue
-		}
-		$fileModified += $line
-	}
-	$fileModified | Out-File -Encoding "UTF8" "$TeleoptiVSConfig\applicationhost.config"
-
-	#2. replace ip with localhost in web/web.config
-	$fileModified = @()
-	$fileOrigin = Get-Content "$TeleoptiWeb\web.config"
-
-	Foreach ($line in $fileOrigin) {
-		if ($line -match "$LocalIP`:$TeleoptiWebPort") {
-			$fileModified += $line.Replace("$LocalIP", "localhost")
-		}
-		else {
-			$fileModified += $line
-		}
-	}
-	$fileModified | Out-File -Encoding "UTF8" "$TeleoptiWeb\web.config"
-
-	#3. replace ip with localhost in AuthenticationBridge/web.config
-	$fileModified = @()
-	$fileOrigin = Get-Content "$TeleoptiAuthenticationBridge\web.config"
-
-	Foreach ($line in $fileOrigin) {
-		if ($line -match "$LocalIP`:$TeleoptiWebPort") {
-			$fileModified += $line.Replace("$LocalIP", "localhost")
-		}
-		else {
-			$fileModified += $line
-		}
-	}
-	$fileModified | Out-File -Encoding "UTF8" "$TeleoptiAuthenticationBridge\web.config"
-	Write-Host "TeleoptiWFM/web`: Desktop access only"
-}
-
-function Start-TeleoptiRestoreToLocal {
-	Enable-TeleoptiVpn
-	Write-Host "Started Teleopti Restore To Local..."
-	& "$TeleoptiDebug\Restore to Local.bat"
-}
-
-function Start-TeleoptiInfratestConfig {
-	Write-Host "Starting Teleopti InfratestConfig..."
-	& "$TeleoptiDebug\InfratestConfig.bat"
-}
-
-function Start-TeleoptiFixMyConfigFlow {
-	Write-Host "Starting Teleopti FixMyConfigFlow..."
-	& "$TeleoptiDebug\FixMyConfigFlow.bat"
-}
-
-function Start-TeleoptiFatClient {
-	& $TeleoptiFatClientPath
-}
-
-function Start-KillTeleoptiFatClient {
-	$process = Get-FatClientProcess
-	if ($process.Id) {
-		Stop-Process $process.Id
-		Write-Host "Teleopti Fat Client is terminated"
-	}
-	else {
-		Write-Host "Teleopti Fat Client has not started"
-	}
-}
-
 function Start-EventViewer {
 	& 'eventvwr'
 }
 
-function Start-LoggingTeleoptiEvents {
-	get-eventlog -LogName Application -Newest $args[0] -Source *Teleopti* | select Index, EntryType, InstanceId, Message | format-list
-}
-
-function Start-ConnectAzure {
-	& $ConnectAzureScript
-}
-
-function Get-FatClientProcess {
-	return Get-Process $TeleoptiFatClientProcessName
+function Start-LoggingEvents {
+	get-eventlog -LogName Application -Newest $args[0] -Source *$args[1]* | select Index, EntryType, InstanceId, Message | format-list
 }
 
 function New-AzurePortal {
@@ -467,28 +175,21 @@ function New-OpenUrlInBrowser {
 }
 
 function New-Kanban {
-	$url1 = "https://teleopti.visualstudio.com/TeleoptiWFM/_boards/board/t/Pandas/Items"
+	$url1 = ""
 	& $Chrome $url1
 	Write-Host "Kanban opened in Chrome."
 }
 
 function New-PullRequest {
-	$url1 = "https://teleopti.visualstudio.com/_git/TeleoptiWFM/pullrequests?_a=mine"
+	$url1 = ""
 	& $Chrome $url1
 	Write-Host "Kanban opened in Chrome."
 }
 
 function New-WorkItem {
-	$url1 = "https://teleopti.visualstudio.com/TeleoptiWFM/_workitems/edit/$($args[0])"
+	$url1 = ""
 	& $Chrome $url1
 	Write-Host "Workd item opened in Chrome."
-}
-
-function New-BuildServer {
-	Enable-TeleoptiVpn
-	$url = "http://buildsrv01/overview.html"
-	& $Chrome $url
-	Write-Host "BuildServer opened in Chrome."
 }
 
 function New-TeamsWebApp {
@@ -543,11 +244,6 @@ function New-MSDN {
 	$url = "https://msdn.microsoft.com/en-us/"
 	& $Chrome $url
 	Write-Host "MSDN opened in Chrome."
-}
-
-function Start-OpenGate {
-	& wget $TeleoptiDoor
-	Write-Host "Gate is opened"
 }
 
 function Start-ClipCurrentPath {
