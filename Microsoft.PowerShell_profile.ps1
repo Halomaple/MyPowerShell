@@ -37,6 +37,9 @@ New-Alias -name log -value Start-LoggingTeleoptiEvents -description "Logging Tel
 New-Alias -name clean -value Start-Clean -description "Clean IIS and kill Teleopti Fat Client" -option ReadOnly
 New-Alias -name clearlog -value Start-ClearEventLogs -description "Clear Event Logs" -option ReadOnly
 New-Alias -name k -value Start-KillProcess -description "Kill process" -option ReadOnly
+New-Alias -name kq -value Start-KillQQProcess -description "Kill QQ" -option ReadOnly
+New-Alias -name kw -value Start-KillWeChatProcess -description "Kill WeChat" -option ReadOnly
+New-Alias -name kx -value Start-KillThunderProcess -description "Kill Thunder" -option ReadOnly
 
 New-Alias -name kanban -value New-Kanban -description "Kanban Board" -option ReadOnly
 New-Alias -name pr -value New-PullRequest -description "Pull Request Board" -option ReadOnly

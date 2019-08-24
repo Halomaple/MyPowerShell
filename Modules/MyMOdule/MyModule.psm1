@@ -115,7 +115,7 @@ function Start-KillVS {
 		Stop-Process $process.Id
 		Write-Host "Visual Studio is terminated"
 	}
- else {
+	else {
 		Write-Host "Visual Studio has not started"
 	}
 }
@@ -139,7 +139,7 @@ function Start-KillIISExpress {
 		Stop-Process $process.Id
 		Write-Host "IIS Express is terminated"
 	}
- else {
+	else {
 		Write-Host "IIS Express has not started"
 	}
 }
@@ -164,6 +164,18 @@ function Start-ClearEventLogs () {
 
 function Start-KillProcess () {
 	& kill -Name $args[0]
+}
+
+function Start-KillQQProcess () {
+	& kill -Name 'QQ'
+}
+
+function Start-KillWeChatProcess () {
+	& kill -Name 'WeChat'
+}
+
+function Start-KillThunderProcess () {
+	& kill -Name 'Thunder'
 }
 
 function Start-SSMS {
@@ -210,7 +222,7 @@ function Enable-TeleoptiVpn {
 		Write-Host "Attempting to connect to $TeleoptiVpn..."
 		rasdial $TeleoptiVpn
 	}
- else {
+	else {
 		Write-Host "Connected to $vpn."
 	}
 }
@@ -421,7 +433,7 @@ function Start-KillTeleoptiFatClient {
 		Stop-Process $process.Id
 		Write-Host "Teleopti Fat Client is terminated"
 	}
- else {
+	else {
 		Write-Host "Teleopti Fat Client has not started"
 	}
 }
