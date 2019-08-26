@@ -34,6 +34,7 @@ function Start-Up {
 		pr - 'Pull Request Board'
 		id - 'Work item'
 		github - 'Github'
+		mail - 'QQ mail'
 
 	Tools:
 		open [url] - 'Open url in browser'
@@ -202,6 +203,12 @@ function New-Github {
 	$url = "https://github.com/"
 	& $Chrome $url
 	Write-Host "Github opened in Chrome."
+}
+
+function New-QQMail {
+	$url = "https://mail.qq.com"
+	& $Chrome $url
+	Write-Host "QQ mail opened in Chrome."
 }
 
 function New-YoudaoDict {

@@ -25,6 +25,7 @@ New-Alias -name id -value New-WorkItem -description "Work item" -option ReadOnly
 New-Alias -name teams -value New-TeamsWebApp -description "Teams Web App" -option ReadOnly
 
 New-Alias -name github -value New-Github -description "Github" -option ReadOnly
+New-Alias -name mail -value New-QQMail -description "QQ mail" -option ReadOnly
 
 New-Alias -name open -value New-OpenUrlInBrowser -description "Open url in browser" -option ReadOnly
 New-Alias -name dict -value New-YoudaoDict -description "Youdao dict" -option ReadOnly
