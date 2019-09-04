@@ -7,6 +7,7 @@ New-Alias -name kis -value Start-KillIISExpress -description "Kill IIS Express" 
 New-Alias -name cis -value Start-ClearIISExpressCache -description "Clear IIS Express Cache" -option ReadOnly
 New-Alias -name sql -value Start-SSMS -description "Launch sql server management studio" -option ReadOnly
 
+New-Alias -name p -value Enter-ProjectsFolder -description "Projects Folder" -option ReadOnly
 New-Alias -name psf -value Enter-PowerShellFolder -description "My PowerShell Folder" -option ReadOnly
 
 New-Alias -name ev -value Start-EventViewer -description "Open Event Viewer" -option ReadOnly

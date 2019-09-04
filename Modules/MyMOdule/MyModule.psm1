@@ -1,3 +1,4 @@
+$ProjectsFolder = "~\Projects"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
 $LocalIP = "$Env:LocalIP"
 
@@ -18,6 +19,7 @@ function Start-Up {
 		sql - 'Luanch sql server management studio'
 
 	Folders:
+		p - 'Projects folder'
 		psf - 'My PowerShell Folder'
 
 	Bat:
@@ -145,6 +147,10 @@ function Start-KillThunderProcess () {
 
 function Start-SSMS {
     Start-Process $SSMS
+}
+
+function Enter-ProjectsFolder {
+    Set-Location $ProjectsFolder
 }
 
 function Enter-PowerShellFolder {
