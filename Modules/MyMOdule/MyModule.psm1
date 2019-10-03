@@ -1,4 +1,4 @@
-$ProjectsFolder = "~\Projects"
+$ProjectsFolder = "~\projects"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
 $LocalIP = "$Env:LocalIP"
 
@@ -32,11 +32,10 @@ function Start-Up {
 		k - 'Kill process'
 
 	Websites:
-		kanban - 'Kanban Board'
-		pr - 'Pull Request Board'
+		gitlab - 'Gitlab'
 		id - 'Work item'
 		github - 'Github'
-		mail - 'QQ mail'
+		mail - 'Mail'
 
 	Tools:
 		open [url] - 'Open url in browser'
@@ -51,7 +50,7 @@ function Start-Up {
 		baidu [keywords] - 'Search keywords using Baidu'
 		bing [keywords] - 'Search keywords using Bing'
 		g [keywords] - 'Search keywords using Google'
-		stackoverflow - 'StackOverflow'
+		s [keywords] - 'Search keywords usering StackOverflow'
 		msdn - 'MSDN'
 
 	PS:
@@ -181,28 +180,16 @@ function New-OpenUrlInBrowser {
     & $Chrome $url
 }
 
-function New-Kanban {
-    $url1 = ""
+function New-Gitlab {
+    $url1 = $Env:GitlabPath
     & $Chrome $url1
-    Write-Host "Kanban opened in Chrome."
-}
-
-function New-PullRequest {
-    $url1 = ""
-    & $Chrome $url1
-    Write-Host "Kanban opened in Chrome."
+    Write-Host "Gitlab opened in Chrome."
 }
 
 function New-WorkItem {
-    $url1 = ""
-    & $Chrome $url1
-    Write-Host "Workd item opened in Chrome."
-}
-
-function New-TeamsWebApp {
-    $url = "https://teams.microsoft.com"
+    $url = $Env:BugZillaPath + $args[0]
     & $Chrome $url
-    Write-Host "Teams Web App opened in Chrome."
+    Write-Host "Workd item opened in Chrome."
 }
 
 function New-Github {
@@ -211,10 +198,10 @@ function New-Github {
     Write-Host "Github opened in Chrome."
 }
 
-function New-QQMail {
-    $url = "https://mail.qq.com"
+function New-Mail {
+    $url = "https://outlook.office.com/mail/inbox"
     & $Chrome $url
-    Write-Host "QQ mail opened in Chrome."
+    Write-Host "Mail opened in Chrome."
 }
 
 function New-YoudaoDict {
@@ -248,7 +235,7 @@ function New-Google {
 }
 
 function New-StackOverflow {
-    $url = "http://stackoverflow.com/"
+    $url = "https://stackoverflow.com/search?q=$args"
     & $Chrome $url
     Write-Host "StackOverflow opened in Chrome."
 }
@@ -271,3 +258,5 @@ function Start-RestartComputer {
         & shutdown /r /t 0
     }
 }
+
+Enter-ProjectsFolder
