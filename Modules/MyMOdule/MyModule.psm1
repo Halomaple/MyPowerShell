@@ -45,7 +45,8 @@ function Start-Up {
 		rst - 'Restart Computer'
 		clipc - 'Clip Current Path'
 		ev - 'Open Event Viewer'
-		log - 'Logging Events'
+        log - 'Logging Events'
+        ll - 'List items'
 
 	Search:
 		baidu [keywords] - 'Search keywords using Baidu'
@@ -261,6 +262,10 @@ function New-MSDN {
 
 function Start-ClipCurrentPath {
     $pwd.Path | clip
+}
+
+function Start-ListItems {
+    & Get-ChildItem
 }
 
 function Start-RestartComputer {

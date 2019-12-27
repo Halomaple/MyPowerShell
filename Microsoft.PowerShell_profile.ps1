@@ -40,6 +40,7 @@ New-Alias -name msdn -value New-MSDN -description "MSDN" -option ReadOnly
 
 New-Alias -name rst -value Start-RestartComputer -description "Restart Computer" -option ReadOnly
 New-Alias -name clipc -value Start-ClipCurrentPath -description "Clip Current Path" -option ReadOnly
+New-Alias -name ll -value Start-ListItems -description "List items" -option ReadOnly
 
 New-Alias -name commands -value Start-ShowCommands -description "Show Commands" -option ReadOnly
 New-Alias -name update -value Update-MyModule -description "Update Module" -option ReadOnly
