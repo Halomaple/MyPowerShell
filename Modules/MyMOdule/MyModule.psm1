@@ -1,4 +1,4 @@
-$ProjectsFolder = "~\Projects"
+$ProjectsFolder = "E:\Projects"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
 $LocalIP = "$Env:LocalIP"
 
