@@ -9,6 +9,8 @@ $SSMS = "C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementSt
 $Chrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
 function Start-Up {
+    & "$ProjectsFolder\myhotkeys.ahk"
+
     Write-Host "
 	Good to see you!
 
