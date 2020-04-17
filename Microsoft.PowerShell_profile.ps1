@@ -22,6 +22,7 @@ New-Alias -name kx -value Start-KillThunderProcess -description "Kill Thunder" -
 
 New-Alias -name kanban -value New-Kanban -description "Kanban Board" -option ReadOnly
 New-Alias -name pr -value New-PullRequest -description "Pull Request Board" -option ReadOnly
+
 New-Alias -name id -value New-WorkItem -description "Work item" -option ReadOnly
 New-Alias -name teams -value New-TeamsWebApp -description "Teams Web App" -option ReadOnly
 
@@ -39,6 +40,7 @@ New-Alias -name stackoverflow -value New-StackOverflow -description "StackOverfl
 New-Alias -name msdn -value New-MSDN -description "MSDN" -option ReadOnly
 
 New-Alias -name rst -value Start-RestartComputer -description "Restart Computer" -option ReadOnly
+New-Alias -name stc -value Start-ShutdownComputer -description "Shutdown computer" -option ReadOnly
 New-Alias -name clipc -value Start-ClipCurrentPath -description "Clip Current Path" -option ReadOnly
 New-Alias -name ll -value Start-ListItems -description "List items" -option ReadOnly
 
