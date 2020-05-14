@@ -178,36 +178,47 @@ function  Start-LogonCentOS {
 }
 
 function Start-ConnectToWorkNetwork {
-    $currentWifi = Start-ShowCurrentWifiNetwork;
+    $currentWifi = Start-ShowCurrentWifiNetwork
     if ($currentWifi -match "$Env:WorkNetworkName") {
-        Write-Host "Connected."
+        Write-Host "Already connected."
     }
     else {
-        $result = netsh wlan connect name="$Env:WorkNetworkName";
-        do {
-            Write-Host "Connecting..."
-            Start-Sleep -Milliseconds 500
-            $currentWifi = Start-ShowCurrentWifiNetwork
-        } while ($currentWifi -notmatch "$Env:WorkNetworkName")
+        $result = netsh wlan connect name="$Env:WorkNetworkName"
 
+        Write-Host "Connecting..." -NoNewline
+        do {
+            Write-Host "." -NoNewline
+            Start-Sleep -Milliseconds 10
+
+            $currentWifi = Start-ShowCurrentWifiNetwork
+            $wifi = Get-NetAdapter -physical | Select-Object Name, Status, Speed | Where-Object Name -eq "Wi-Fi"
+        } while ($currentWifi -notmatch "$Env:WorkNetworkName" -or $wifi.Status -ne 'Up')
+
+        Write-Host ""
         Write-Host "Network switched to: $Env:WorkNetworkName"
         Get-NetAdapter -physical | Where-Object Name -eq  "Wi-Fi"
     }
 }
 
 function Start-ConnectToInternet {
-    $currentWifi = Start-ShowCurrentWifiNetwork;
+    $currentWifi = Start-ShowCurrentWifiNetwork
     if ($currentWifi -match "$Env:InternetName") {
-        Write-Host "Connected."
+        Write-Host "Already connected."
     }
     else {
-        $result = netsh wlan connect name="$Env:InternetName";
-        do {
-            Write-Host "Connecting..."
-            Start-Sleep -Milliseconds 500
-            $currentWifi = Start-ShowCurrentWifiNetwork
-        } while ($currentWifi -notmatch "$Env:InternetName")
+        $result = netsh wlan connect name="$Env:InternetName"
 
+        Write-Host "Connecting..." -NoNewline
+
+        do {
+            Write-Host "." -NoNewline
+            Start-Sleep -Milliseconds 10
+
+            $currentWifi = Start-ShowCurrentWifiNetwork
+            $wifi = Get-NetAdapter -physical | Select-Object Name, Status, Speed | Where-Object Name -eq "Wi-Fi"
+        } while ($currentWifi -notmatch "$Env:InternetName" -or $wifi.Status -ne 'Up')
+
+        Write-Host ""
         Write-Host "Network switched to: $Env:InternetName"
         Get-NetAdapter -physical | Where-Object Name -eq  "Wi-Fi"
     }
