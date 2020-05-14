@@ -16,9 +16,15 @@ New-Alias -name log -value Start-LoggingEvents -description "Logging Events" -op
 New-Alias -name clean -value Start-Clean -description "Clean IIS" -option ReadOnly
 New-Alias -name clearlog -value Start-ClearEventLogs -description "Clear Event Logs" -option ReadOnly
 New-Alias -name k -value Start-KillProcess -description "Kill process" -option ReadOnly
-New-Alias -name kq -value Start-KillQQProcess -description "Kill QQ" -option ReadOnly
-New-Alias -name kw -value Start-KillWeChatProcess -description "Kill WeChat" -option ReadOnly
-New-Alias -name kx -value Start-KillThunderProcess -description "Kill Thunder" -option ReadOnly
+
+New-Alias -name ubuntu -value Start-LogonUbuntu -description "Logon Ubuntu machine" -option ReadOnly
+New-Alias -name centos -value Start-LogonCentOS -description "Logon CentOS machine" -option ReadOnly
+New-Alias -name ab -value Start-ConnectToWorkNetwork -description "Work network wifi" -option ReadOnly
+New-Alias -name sz -value Start-ConnectToInternet -description "Internet wifi" -option ReadOnly
+New-Alias -name wifi -value Start-ShowCurrentWifiNetwork -description "Show current wifi" -option ReadOnly
+New-Alias -name rst -value Start-RestartComputer -description "Restart computer" -option ReadOnly
+New-Alias -name stc -value Start-ShutdownComputer -description "Shutdown computer" -option ReadOnly
+New-Alias -name hibernate -value Start-HibernateComputer -description "Hibernate computer" -option ReadOnly
 
 New-Alias -name gitlab -value New-Gitlab -description "Gitlab" -option ReadOnly
 New-Alias -name id -value New-WorkItem -description "Work item" -option ReadOnly
@@ -35,8 +41,8 @@ New-Alias -name g -value New-Google -description "Google" -option ReadOnly
 New-Alias -name s -value New-StackOverflow -description "StackOverflow" -option ReadOnly
 New-Alias -name msdn -value New-MSDN -description "MSDN" -option ReadOnly
 
-New-Alias -name rst -value Start-RestartComputer -description "Restart Computer" -option ReadOnly
 New-Alias -name clipc -value Start-ClipCurrentPath -description "Clip Current Path" -option ReadOnly
+New-Alias -name ll -value Start-ListItems -description "List items" -option ReadOnly
 
 New-Alias -name commands -value Start-ShowCommands -description "Show Commands" -option ReadOnly
 New-Alias -name update -value Update-MyModule -description "Update Module" -option ReadOnly

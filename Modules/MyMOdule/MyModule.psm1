@@ -1,6 +1,8 @@
 $ProjectsFolder = "~\projects"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
 $LocalIP = "$Env:LocalIP"
+$UbuntuMachine = "$Env:UbuntuMachine"
+$CentOSMachine = "$Env:CentOSMachine"
 
 $VS = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\devenv.exe"
 $VSProcessName = "devenv"
@@ -10,53 +12,63 @@ $Chrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
 function Start-Up {
     Write-Host "
-	Good to see you!
+    Good to see you!
 
-	Programs:
-		vs - 'Launch visual studio'
-		kvs - 'Kill visual studio'
-		rvs - 'Restart visual studio'
-		sql - 'Luanch sql server management studio'
+    Programs:
+        vs - 'Launch visual studio'
+        kvs - 'Kill visual studio'
+        rvs - 'Restart visual studio'
+        sql - 'Luanch sql server management studio'
 
-	Folders:
-		p - 'Projects folder'
-		psf - 'My PowerShell Folder'
+    Folders:
+        p - 'Projects folder'
+        psf - 'My PowerShell Folder'
 
-	Bat:
+    Bat:
 
-	Projects:
-		kis - 'Kill IIS Express'
-		cis - 'Clear IIS Express Cache'
-		clean - 'Clean IIS'
-		clearlog - 'Clear Event Logs'
-		k - 'Kill process'
+    Projects:
+        kis - 'Kill IIS Express'
+        cis - 'Clear IIS Express Cache'
+        clean - 'Clean IIS'
+        clearlog - 'Clear Event Logs'
+        k - 'Kill process'
 
-	Websites:
-		gitlab - 'Gitlab'
-		id - 'Work item'
-		github - 'Github'
-		mail - 'Mail'
+    Websites:
+        gitlab - 'Gitlab'
+        id - 'Work item'
+        github - 'Github'
+        mail - 'Mail'
 
-	Tools:
-		open [url] - 'Open url in browser'
-		dict [word] - 'Youdao dict'
-		can [word] - 'Can I Use'
-		rst - 'Restart Computer'
-		clipc - 'Clip Current Path'
-		ev - 'Open Event Viewer'
-		log - 'Logging Events'
+    Tools:
+        open [url] - 'Open url in browser'
+        dict [word] - 'Youdao dict'
+        can [word] - 'Can I Use'
+        clipc - 'Clip Current Path'
+        ll - 'List items'
+        ev - 'Open Event Viewer'
+        log - 'Logging Events'
 
-	Search:
-		baidu [keywords] - 'Search keywords using Baidu'
-		bing [keywords] - 'Search keywords using Bing'
-		g [keywords] - 'Search keywords using Google'
-		s [keywords] - 'Search keywords usering StackOverflow'
-		msdn - 'MSDN'
+    Computer:
+        ubuntu - 'Logon Ubuntu machine'
+        centos - 'Logon CentOS machine'
+        ab - 'Connect to work network'
+        sz - 'Connect to internet'
+        wifi - 'Show current wifi'
+        rst - 'Restart computer'
+        stc - 'Shutdown computer'
+        hibernate - 'Hibernate computer'
 
-	PS:
-		commands - 'Show Commands'
-		update - 'Update Module'
-	"
+    Search:
+        baidu [keywords] - 'Search keywords using Baidu'
+        bing [keywords] - 'Search keywords using Bing'
+        g [keywords] - 'Search keywords using Google'
+        s [keywords] - 'Search keywords usering StackOverflow'
+        msdn - 'MSDN'
+
+    PS:
+        commands - 'Show Commands'
+        update - 'Update Module'
+    "
 }
 
 Start-Up
@@ -113,7 +125,7 @@ function Start-KillIISExpress {
 
 function Start-ClearIISExpressCache {
     Write-Host "Clearing IISExpress Cache..."
-    rm ~/Documents/IISExpress/* -r
+    Remove-Item ~/Documents/IISExpress/* -r
     Write-Host "IISExpress Cache Cleaned!"
 }
 
@@ -129,20 +141,9 @@ function Start-ClearEventLogs () {
 }
 
 function Start-KillProcess () {
-    & kill -Name $args[0]
+    & Stop-Process -Name $args[0]
 }
 
-function Start-KillQQProcess () {
-    & kill -Name 'QQ'
-}
-
-function Start-KillWeChatProcess () {
-    & kill -Name 'WeChat'
-}
-
-function Start-KillThunderProcess () {
-    & kill -Name 'Thunder'
-}
 
 function Start-SSMS {
     Start-Process $SSMS
@@ -165,7 +166,55 @@ function Start-EventViewer {
 }
 
 function Start-LoggingEvents {
-    get-eventlog -LogName Application -Newest $args[0] -Source *$args[1]* | select Index, EntryType, InstanceId, Message | format-list
+    get-eventlog -LogName Application -Newest $args[0] -Source *$args[1]* | Select-Object Index, EntryType, InstanceId, Message | format-list
+}
+
+function  Start-LogonUbuntu {
+    ssh ubuntu@$UbuntuMachine
+}
+
+function  Start-LogonCentOS {
+    ssh root@$CentOSMachine
+}
+
+function Start-ConnectToWorkNetwork {
+    $currentWifi = Start-ShowCurrentWifiNetwork;
+    if ($currentWifi -match "$Env:WorkNetworkName") {
+        Write-Host "Connected."
+    }
+    else {
+        $result = netsh wlan connect name="$Env:WorkNetworkName";
+        do {
+            Write-Host "Connecting..."
+            Start-Sleep -Milliseconds 500
+            $currentWifi = Start-ShowCurrentWifiNetwork
+        } while ($currentWifi -notmatch "$Env:WorkNetworkName")
+
+        Write-Host "Network switched to: $Env:WorkNetworkName"
+        Get-NetAdapter -physical | Where-Object Name -eq  "Wi-Fi"
+    }
+}
+
+function Start-ConnectToInternet {
+    $currentWifi = Start-ShowCurrentWifiNetwork;
+    if ($currentWifi -match "$Env:InternetName") {
+        Write-Host "Connected."
+    }
+    else {
+        $result = netsh wlan connect name="$Env:InternetName";
+        do {
+            Write-Host "Connecting..."
+            Start-Sleep -Milliseconds 500
+            $currentWifi = Start-ShowCurrentWifiNetwork
+        } while ($currentWifi -notmatch "$Env:InternetName")
+
+        Write-Host "Network switched to: $Env:InternetName"
+        Get-NetAdapter -physical | Where-Object Name -eq  "Wi-Fi"
+    }
+}
+
+function Start-ShowCurrentWifiNetwork {
+    return netsh wlan show interfaces | Select-String '\sSSID'
 }
 
 function New-AzurePortal {
@@ -187,7 +236,7 @@ function New-Gitlab {
 }
 
 function New-WorkItem {
-    $url = $Env:BugZillaPath + $args[0]
+    $url = $Env:JiraPath + $args[0]
     & $Chrome $url
     Write-Host "Workd item opened in Chrome."
 }
@@ -250,6 +299,10 @@ function Start-ClipCurrentPath {
     $pwd.Path | clip
 }
 
+function Start-ListItems {
+    & Get-ChildItem
+}
+
 function Start-RestartComputer {
     if ($args[0]) {
         & shutdown /r /t $args[0]
@@ -259,4 +312,15 @@ function Start-RestartComputer {
     }
 }
 
-Enter-ProjectsFolder
+function Start-ShutdownComputer {
+    if ($args[0]) {
+        & shutdown /s /t $args[0]
+    }
+    else {
+        & shutdown /s /t 0
+    }
+}
+
+function Start-HibernateComputer {
+    & shutdown /h
+}
