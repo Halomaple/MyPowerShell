@@ -2,7 +2,6 @@ $ProjectsFolder = "~\projects"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
 $LocalIP = "$Env:LocalIP"
 $UbuntuMachine = "$Env:UbuntuMachine"
-$CentOSMachine = "$Env:CentOSMachine"
 $Chrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
 
@@ -20,7 +19,6 @@ function Start-Up {
         clearlog - 'Clear Event Logs'
 
     VMs:
-        centos - 'Logon CentOS machine'
         ubuntu - 'Logon Ubuntu machine'
 
     Network:
@@ -83,9 +81,6 @@ function Start-ClearEventLogs () {
 }
 
 ## VMs
-function  Start-LogonCentOS {
-    ssh root@$CentOSMachine
-}
 
 function  Start-LogonUbuntu {
     ssh ubuntu@$UbuntuMachine

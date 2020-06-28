@@ -12,7 +12,6 @@ New-Alias -name clearlog -value Start-ClearEventLogs -description "Clear Event L
 
 ## VMs
 New-Alias -name ubuntu -value Start-LogonUbuntu -description "Logon Ubuntu machine" -option ReadOnly
-New-Alias -name centos -value Start-LogonCentOS -description "Logon CentOS machine" -option ReadOnly
 
 ## Network
 New-Alias -name ab -value Start-ConnectToWorkNetwork -description "Work network wifi" -option ReadOnly
