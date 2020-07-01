@@ -1,4 +1,4 @@
-$ProjectsFolder = "E:\Projects"
+$ProjectsFolder = "$Env:ProjectFolder"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
 $LocalIP = "$Env:LocalIP"
 
@@ -32,6 +32,7 @@ function Start-Up {
 		clean - 'Clean IIS'
 		clearlog - 'Clear Event Logs'
 		k - 'Kill process'
+		server - 'Connect to Ubuntu Server'
 
 	Websites:
 		kanban - 'Kanban Board'
@@ -135,6 +136,10 @@ function Start-ClearEventLogs () {
 
 function Start-KillProcess () {
 	& kill -Name $args[0]
+}
+
+function Start-ConnectToServer () {
+	& ssh -i $ProjectsFolder\ubuntu\id_rsa ubuntu@$Env:UbuntuServer
 }
 
 function Start-KillQQProcess () {

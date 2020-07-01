@@ -16,6 +16,7 @@ New-Alias -name log -value Start-LoggingEvents -description "Logging Events" -op
 New-Alias -name clean -value Start-Clean -description "Clean IIS" -option ReadOnly
 New-Alias -name clearlog -value Start-ClearEventLogs -description "Clear Event Logs" -option ReadOnly
 New-Alias -name k -value Start-KillProcess -description "Kill process" -option ReadOnly
+New-Alias -name server -value Start-ConnectToServer -description "Connect to Ubuntu Server" -option ReadOnly
 New-Alias -name kq -value Start-KillQQProcess -description "Kill QQ" -option ReadOnly
 New-Alias -name kw -value Start-KillWeChatProcess -description "Kill WeChat" -option ReadOnly
 New-Alias -name kx -value Start-KillThunderProcess -description "Kill Thunder" -option ReadOnly
