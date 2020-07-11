@@ -1,163 +1,54 @@
 $ProjectsFolder = "$Env:ProjectFolder"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
 $LocalIP = "$Env:LocalIP"
-
-$VS = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\devenv.exe"
-$VSProcessName = "devenv"
-$IISExpressProcessName = "iisexpress"
-$SSMS = "C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"
+$UbuntuMachine = "$Env:UbuntuMachine"
 $Chrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
 function Start-Up {
-	& "$ProjectsFolder\myhotkeys.ahk"
-
 	Write-Host "
-	Good to see you!
+    Good to see you!
 
-	Programs:
-		vs - 'Launch visual studio'
-		kvs - 'Kill visual studio'
-		rvs - 'Restart visual studio'
-		sql - 'Luanch sql server management studio'
+    Folders:
+        p - 'Projects folder'
+        psf - 'My PowerShell Folder'
 
-	Folders:
-		p - 'Projects folder'
-		psf - 'My PowerShell Folder'
+    Logs:
+        ev - 'Open Event Viewer'
+        log - 'Logging Events'
+        clearlog - 'Clear Event Logs'
 
-	Bat:
+    VMs:
+        ubuntu - 'Logon Ubuntu machine'
 
-	Projects:
-		kis - 'Kill IIS Express'
-		cis - 'Clear IIS Express Cache'
-		clean - 'Clean IIS'
-		clearlog - 'Clear Event Logs'
-		k - 'Kill process'
-		server - 'Connect to Ubuntu Server'
+    Sites:
+        github - 'Github'
+        gitlab - 'Gitlab'
+        mail - 'Mail'
+        open [url] - 'Open url in browser'
 
-	Websites:
-		kanban - 'Kanban Board'
-		pr - 'Pull Request Board'
-		id - 'Work item'
-		github - 'Github'
-		mail - 'QQ mail'
+    Search:
+        baidu [keywords] - 'Search keywords using Baidu'
+        bing [keywords] - 'Search keywords using Bing'
+        can [word] - 'Can I Use'
+        dict [word] - 'Youdao dict'
+        id - 'Work item'
+        g [keywords] - 'Search keywords using Google'
+        s [keywords] - 'Search keywords usering StackOverflow'
 
-	Tools:
-		open [url] - 'Open url in browser'
-		dict [word] - 'Youdao dict'
-		can [word] - 'Can I Use'
-		rst - 'Restart Computer'
-		stc - 'Shutdown computer'
-		clipc - 'Clip Current Path'
-		ev - 'Open Event Viewer'
-		log - 'Logging Events'
-		ll - 'List items'
-
-	Search:
-		baidu [keywords] - 'Search keywords using Baidu'
-		bing [keywords] - 'Search keywords using Bing'
-		g [keywords] - 'Search keywords using Google'
-		stackoverflow - 'StackOverflow'
-		msdn - 'MSDN'
-
-	PS:
-		commands - 'Show Commands'
-		update - 'Update Module'
-	"
+    Misc:
+        commands - 'Show Commands'
+        clipc - 'Clip Current Path'
+        k - 'Kill process'
+        ll - 'List items'
+        hibernate - 'Hibernate computer'
+        rst - 'Restart computer'
+        stc - 'Shutdown computer'
+    "
 }
 
 Start-Up
 
-function Start-ShowCommands {
-	Start-Up
-}
-
-function Update-MyModule {
-	Remove-Module MyModule
-	Import-Module MyModule
-
-	Write-Host "Module updated!"
-}
-
-function Start-VS {
-	Start-Process $VS
-}
-
-function Start-KillVS {
-	$process = Get-VSProcess
-	if ($process.Id) {
-		Stop-Process $process.Id
-		Write-Host "Visual Studio is terminated"
-	}
-	else {
-		Write-Host "Visual Studio has not started"
-	}
-}
-
-function Get-VSProcess {
-	return Get-Process $VSProcessName
-}
-
-function Start-RestartVS {
-	Start-KillVS
-	Start-VS
-}
-
-function Get-IISExpressProcess {
-	return Get-Process $IISExpressProcessName
-}
-
-function Start-KillIISExpress {
-	$process = Get-IISExpressProcess
-	if ($process.Id) {
-		Stop-Process $process.Id
-		Write-Host "IIS Express is terminated"
-	}
-	else {
-		Write-Host "IIS Express has not started"
-	}
-}
-
-function Start-ClearIISExpressCache {
-	Write-Host "Clearing IISExpress Cache..."
-	rm ~/Documents/IISExpress/* -r
-	Write-Host "IISExpress Cache Cleaned!"
-}
-
-function Start-Clean () {
-	Start-KillIISExpress
-	Start-ClearIISExpressCache
-}
-
-function Start-ClearEventLogs () {
-	& Clear-EventLog "Application"
-	& Clear-EventLog "Security"
-	& Clear-EventLog "System"
-}
-
-function Start-KillProcess () {
-	& kill -Name $args[0]
-}
-
-function Start-ConnectToServer () {
-	& ssh -i $ProjectsFolder\ubuntu\id_rsa ubuntu@$Env:UbuntuServer
-}
-
-function Start-KillQQProcess () {
-	& kill -Name 'QQ'
-}
-
-function Start-KillWeChatProcess () {
-	& kill -Name 'WeChat'
-}
-
-function Start-KillThunderProcess () {
-	& kill -Name 'Thunder'
-}
-
-function Start-SSMS {
-	Start-Process $SSMS
-}
-
+## Folders
 function Enter-ProjectsFolder {
 	Set-Location $ProjectsFolder
 }
@@ -166,88 +57,44 @@ function Enter-PowerShellFolder {
 	Set-Location $PowerShellFolder
 }
 
-function Get-VpnStatus {
-	rasdial
-}
 
+## Logs
 function Start-EventViewer {
 	& 'eventvwr'
 }
 
 function Start-LoggingEvents {
-	get-eventlog -LogName Application -Newest $args[0] -Source *$args[1]* | Select-Object Index, EntryType, InstanceId, Message | format-list
+	Get-Eventlog -LogName Application -Newest $args[0] -Source *$args[1]* | Select-Object Index, EntryType, InstanceId, Message | format-list
 }
 
-function  Start-DisableEthernet {
-	Disable-NetAdapter -Name $Env:EthernetName -Confirm:$false
-	$targetNetwork = Get-NetAdapter -physical | Where-Object Name -eq  "$Env:EthernetName"
-	do {
-		Write-Host "Disabling..."
-		Start-Sleep -Milliseconds 500
-		$targetNetwork = Get-NetAdapter -physical | Where-Object Name -eq  "$Env:EthernetName"
-	} while ($targetNetwork.status -eq 'Up')
-
-	$targetNetwork
+function Start-ClearEventLogs () {
+	& Clear-EventLog "Application"
+	& Clear-EventLog "Security"
+	& Clear-EventLog "System"
 }
 
-function  Start-EnableEthernet {
-	Enable-NetAdapter -Name $Env:EthernetName
-	$targetNetwork = Get-NetAdapter -physical | Where-Object Name -eq  "$Env:EthernetName"
-	do {
-		Write-Host "Enabling..."
-		Start-Sleep -Milliseconds 500
-		$targetNetwork = Get-NetAdapter -physical | Where-Object Name -eq  "$Env:EthernetName"
-	} while ($targetNetwork.status -ne 'Up')
-
-	$targetNetwork
+## VMs
+function  Start-LogonUbuntu {
+	ssh -i $ProjectsFolder\ubuntu\id_rsa ubuntu@$UbuntuMachine
 }
 
-function Start-ConnectToWorkNetwork {
-	$all = netsh wlan show networks
-	$currentWifi = Start-ShowCurrentWifiNetwork;
-	if ($currentWifi -match "$Env:WorkNetworkName") {
-		Write-Host "Connected."
-	}
-	else {
-		netsh wlan connect name="$Env:WorkNetworkName"
-		do {
-			Write-Host "Connecting..."
-			Start-Sleep -Milliseconds 500
-			$targetNetwork = Get-NetAdapter -physical | Where-Object Name -eq  "Wi-Fi"
-		} while ($targetNetwork.status -ne 'Up')
-
-		Write-Host "Network switched to: $Env:WorkNetworkName"
-		$targetNetwork
-	}
-}
-
-function Start-ConnectToInternet {
-	$all = netsh wlan show networks
-	$currentWifi = Start-ShowCurrentWifiNetwork;
-	if ($currentWifi -match "$Env:InternetName") {
-		Write-Host "Connected."
-	}
-	else {
-		netsh wlan connect name="$Env:InternetName"
-		do {
-			Write-Host "Connecting..."
-			Start-Sleep -Milliseconds 500
-			$targetNetwork = Get-NetAdapter -physical | Where-Object Name -eq  "Wi-Fi"
-		} while ($targetNetwork.status -ne 'Up')
-
-		Write-Host "Network switched to: $Env:InternetName"
-		$targetNetwork
-	}
-}
-
-function Start-ShowCurrentWifiNetwork {
-	return netsh wlan show interfaces | Select-String '\sSSID'
-}
-
-function New-AzurePortal {
-	$url = "https://portal.azure.com/"
+## Sites
+function New-Github {
+	$url = "https://github.com/"
 	& $Chrome $url
-	Write-Host "Azure Portal opened in Chrome."
+	Write-Host "Github opened in Chrome."
+}
+
+function New-Gitlab {
+	$url1 = $Env:GitlabPath
+	& $Chrome $url1
+	Write-Host "Gitlab opened in Chrome."
+}
+
+function New-Mail {
+	$url = "https://outlook.office.com/mail/inbox"
+	& $Chrome $url
+	Write-Host "Mail opened in Chrome."
 }
 
 function New-OpenUrlInBrowser {
@@ -256,54 +103,8 @@ function New-OpenUrlInBrowser {
 	& $Chrome $url
 }
 
-function New-Kanban {
-	$url1 = ""
-	& $Chrome $url1
-	Write-Host "Kanban opened in Chrome."
-}
 
-function New-PullRequest {
-	$url1 = ""
-	& $Chrome $url1
-	Write-Host "Kanban opened in Chrome."
-}
-
-function New-WorkItem {
-	$url1 = ""
-	& $Chrome $url1
-	Write-Host "Workd item opened in Chrome."
-}
-
-function New-TeamsWebApp {
-	$url = "https://teams.microsoft.com"
-	& $Chrome $url
-	Write-Host "Teams Web App opened in Chrome."
-}
-
-function New-Github {
-	$url = "https://github.com/"
-	& $Chrome $url
-	Write-Host "Github opened in Chrome."
-}
-
-function New-QQMail {
-	$url = "https://mail.qq.com"
-	& $Chrome $url
-	Write-Host "QQ mail opened in Chrome."
-}
-
-function New-YoudaoDict {
-	Write-Host "Looking up $($args[0]) in Youdao dict online"
-	$url = "http://dict.youdao.com/w/eng/$($args[0])"
-	& $Chrome $url
-}
-
-function New-CanIUse {
-	Write-Host "Can I use $($args[0]) ?"
-	$url = "http://caniuse.com/#search=$($args[0])"
-	& $Chrome $url
-}
-
+## Search
 function New-Baidu {
 	Write-Host "Searched keywords using Baidu."
 	$url = "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=$args"
@@ -316,6 +117,24 @@ function New-Bing {
 	& $Chrome $url
 }
 
+function New-CanIUse {
+	Write-Host "Can I use $($args[0]) ?"
+	$url = "http://caniuse.com/#search=$($args[0])"
+	& $Chrome $url
+}
+
+function New-YoudaoDict {
+	Write-Host "Looking up $($args[0]) in Youdao dict online"
+	$url = "http://dict.youdao.com/w/eng/$($args[0])"
+	& $Chrome $url
+}
+
+function New-WorkItem {
+	$url = $Env:JiraPath + $args[0]
+	& $Chrome $url
+	Write-Host "Workd item opened in Chrome."
+}
+
 function New-Google {
 	Write-Host "Searched keywords using Google."
 	$url = "http://www.google.com/search?q=$args"
@@ -323,25 +142,32 @@ function New-Google {
 }
 
 function New-StackOverflow {
-	$url = "http://stackoverflow.com/"
+	$url = "https://stackoverflow.com/search?q=$args"
 	& $Chrome $url
 	Write-Host "StackOverflow opened in Chrome."
 }
 
-function New-MSDN {
-	$url = "https://msdn.microsoft.com/en-us/"
-	& $Chrome $url
-	Write-Host "MSDN opened in Chrome."
+
+## Misc
+function Start-ShowCommands {
+	Start-Up
 }
 
 function Start-ClipCurrentPath {
 	$pwd.Path | clip
 }
 
+function Start-KillProcess () {
+	& Stop-Process -Name $args[0]
+}
+
 function Start-ListItems {
 	& Get-ChildItem
 }
 
+function Start-HibernateComputer {
+	& shutdown /h
+}
 function Start-RestartComputer {
 	if ($args[0]) {
 		& shutdown /r /t $args[0]
@@ -359,9 +185,3 @@ function Start-ShutdownComputer {
 		& shutdown /s /t 0
 	}
 }
-
-function Start-HibernateComputer {
-	& shutdown /h
-}
-
-Enter-ProjectsFolder
