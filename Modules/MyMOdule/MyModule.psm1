@@ -155,7 +155,12 @@ function Start-KillProcess () {
 }
 
 function Start-ListItems {
-	& Get-ChildItem
+	if ($args[0]) {
+		& Get-ChildItem $args[0]
+	}
+	else {
+		& Get-ChildItem
+	}
 }
 
 function Start-HibernateComputer {
