@@ -38,6 +38,10 @@ function Start-Up {
         commands - 'Show Commands'
         clipc - 'Clip Current Path'
         k - 'Kill process'
+        kb - 'Kill Baidu Netdisk'
+        kq - 'Kill QQ'
+        kw - 'Kill WeChat'
+        kt - 'Kill Thunder'
         ll - 'List items'
         hibernate - 'Hibernate computer'
         rst - 'Restart computer'
@@ -161,6 +165,22 @@ function Start-ListItems {
 	else {
 		& Get-ChildItem
 	}
+}
+
+function Start-KillBaiduNetdiskProcess () {
+	& kill -Name 'BaiduNetdisk'
+}
+
+function Start-KillQQProcess () {
+	& kill -Name 'QQ'
+}
+
+function Start-KillWeChatProcess () {
+	& kill -Name 'WeChat'
+}
+
+function Start-KillThunderProcess () {
+	& kill -Name 'Thunder'
 }
 
 function Start-HibernateComputer {

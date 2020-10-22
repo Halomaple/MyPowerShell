@@ -30,6 +30,10 @@ New-Alias -name s -value New-StackOverflow -description "StackOverflow" -option 
 New-Alias -name commands -value Start-ShowCommands -description "Show Commands" -option ReadOnly
 New-Alias -name clipc -value Start-ClipCurrentPath -description "Clip Current Path" -option ReadOnly
 New-Alias -name k -value Start-KillProcess -description "Kill process" -option ReadOnly
+New-Alias -name kb -value Start-KillBaiduNetdiskProcess -description "Kill Baidu Netdisk" -option ReadOnly
+New-Alias -name kq -value Start-KillQQProcess -description "Kill QQ" -option ReadOnly
+New-Alias -name kw -value Start-KillWeChatProcess -description "Kill WeChat" -option ReadOnly
+New-Alias -name kt -value Start-KillThunderProcess -description "Kill Thunder" -option ReadOnly
 New-Alias -name ll -value Start-ListItems -description "List items" -option ReadOnly
 New-Alias -name hibernate -value Start-HibernateComputer -description "Hibernate computer" -option ReadOnly
 New-Alias -name rst -value Start-RestartComputer -description "Restart computer" -option ReadOnly
