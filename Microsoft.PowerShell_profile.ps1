@@ -11,7 +11,8 @@ New-Alias -name clearlog -value Start-ClearEventLogs -description "Clear Event L
 
 
 ## VMs
-New-Alias -name ubuntu -value Start-LogonUbuntu -description "Logon Ubuntu machine" -option ReadOnly
+New-Alias -name u1 -value Start-LogonUbuntu1 -description "Logon Ubuntu 1 machine" -option ReadOnly
+New-Alias -name u2 -value Start-LogonUbuntu2 -description "Logon Ubuntu 2 machine" -option ReadOnly
 
 ## Network
 New-Alias -name ab -value Start-ConnectToWorkNetwork -description "Work network wifi" -option ReadOnly

@@ -1,7 +1,8 @@
 $ProjectsFolder = "~\projects"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
 $LocalIP = "$Env:LocalIP"
-$UbuntuMachine = "$Env:UbuntuMachine"
+$UbuntuMachine1 = "$Env:UbuntuMachine1"
+$UbuntuMachine2 = "$Env:UbuntuMachine2"
 $Chrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
 
@@ -19,7 +20,8 @@ function Start-Up {
         clearlog - 'Clear Event Logs'
 
     VMs:
-        ubuntu - 'Logon Ubuntu machine'
+        u1 - 'Logon Ubuntu 1 machine'
+        u2 - 'Logon Ubuntu 2 machine'
 
     Network:
         ab - 'Connect to work network'
@@ -79,10 +81,13 @@ function Start-ClearEventLogs () {
     & Clear-EventLog "System"
 }
 
-## VMs
+## Workstations
+function  Start-LogonUbuntu1 {
+    ssh ubuntu@$UbuntuMachine1
+}
 
-function  Start-LogonUbuntu {
-    ssh ubuntu@$UbuntuMachine
+function  Start-LogonUbuntu2 {
+    ssh ubuntu@$UbuntuMachine2
 }
 
 
