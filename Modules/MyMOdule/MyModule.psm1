@@ -83,11 +83,11 @@ function Start-ClearEventLogs () {
 
 ## Workstations
 function  Start-LogonUbuntu1 {
-    ssh ubuntu@$UbuntuMachine1
+    ssh u1
 }
 
 function  Start-LogonUbuntu2 {
-    ssh ubuntu@$UbuntuMachine2
+    ssh u2
 }
 
 
