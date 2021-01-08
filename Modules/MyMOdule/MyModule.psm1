@@ -1,8 +1,6 @@
 $ProjectsFolder = "~\projects"
 $PowerShellFolder = "~\Documents\WindowsPowerShell"
 $LocalIP = "$Env:LocalIP"
-$UbuntuMachine1 = "$Env:UbuntuMachine1"
-$UbuntuMachine2 = "$Env:UbuntuMachine2"
 $Chrome = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
 
