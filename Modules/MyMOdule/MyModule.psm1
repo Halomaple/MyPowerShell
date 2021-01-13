@@ -145,10 +145,12 @@ function Start-ShowCurrentWifiNetwork {
 
 function Start-EnableEthernet {
     Enable-NetAdapter -Name Ethernet -Confirm:$False
+    Write-Host "Ethernet enabled"
 }
 
 function Start-DisableEthernet {
     Disable-NetAdapter -Name Ethernet -Confirm:$False
+    Write-Host "Ethernet disabled"
 }
 
 
