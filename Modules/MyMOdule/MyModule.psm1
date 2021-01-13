@@ -25,6 +25,8 @@ function Start-Up {
         ab - 'Connect to work network'
         sz - 'Connect to internet'
         wifi - 'Show current wifi'
+        ee - 'Enable Ethernet'
+        de - 'Disable Ethernet'
 
     Sites:
         azure - 'Azure Portal'
@@ -140,6 +142,15 @@ function Start-ConnectToInternet {
 function Start-ShowCurrentWifiNetwork {
     return netsh wlan show interfaces | Select-String '\sSSID'
 }
+
+function Start-EnableEthernet {
+    Enable-NetAdapter -Name Ethernet -Confirm:$False
+}
+
+function Start-DisableEthernet {
+    Disable-NetAdapter -Name Ethernet -Confirm:$False
+}
+
 
 ## Sites
 function New-AzurePortal {

@@ -18,6 +18,8 @@ New-Alias -name u2 -value Start-LogonUbuntu2 -description "Logon Ubuntu 2 machin
 New-Alias -name ab -value Start-ConnectToWorkNetwork -description "Work network wifi" -option ReadOnly
 New-Alias -name sz -value Start-ConnectToInternet -description "Internet wifi" -option ReadOnly
 New-Alias -name wifi -value Start-ShowCurrentWifiNetwork -description "Show current wifi" -option ReadOnly
+New-Alias -name ee -value Start-EnableEthernet -description "Enable Ethernet" -option ReadOnly
+New-Alias -name de -value Start-DisableEthernet -description "Disable Ethernet" -option ReadOnly
 
 ## Sites
 New-Alias -name azure -value New-AzurePortal -description "Azure Portal" -option ReadOnly
